@@ -1,0 +1,1 @@
+{"title":"Insect","toolTip":"These insects asorb weak projectiles turning them in to health","subType":1,"cost":2,"isActive":false,"moveSpeed":1.0,"damageMod":1,"priority":2.0,"color":{"r":0.3,"g":0.2,"b":0.3,"a":1.0},"onHitEffectName":"","onCollisionEffectName":"PotionJuiceEffect"} 

@@ -1,0 +1,1 @@
+{"title":"Slit-Faced Serum","toolTip":"An amber-colored, protein-rich liquid that separates out when blood coagulates.","subType":1,"cost":1.5,"isActive":false,"moveSpeed":1.0,"damageMod":1.0,"priority":1.0,"color":{"r":0.5,"g":0.15,"b":0.1,"a":1},"onHitEffectName":"LowHealthHitEffect"}

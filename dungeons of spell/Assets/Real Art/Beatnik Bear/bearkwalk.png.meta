@@ -1,0 +1,96 @@
+fileFormatVersion: 2
+guid: e7aca513eda306f448e51932779e2557
+timeCreated: 1480384947
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bearkwalk_0
+    21300002: bearkwalk_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: bearkwalk_0
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 9
+        width: 147
+        height: 278
+      alignment: 9
+      pivot: {x: 0.5429645, y: 0.50000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38.18422, y: 138.99998}
+        - {x: 13.184219, y: 138.99998}
+        - {x: 6.1842194, y: 137.99998}
+        - {x: -62.81578, y: 99.999985}
+        - {x: -79.81578, y: 6.9999847}
+        - {x: -79.81578, y: -88.000015}
+        - {x: -61.81578, y: -139.00002}
+        - {x: -16.81578, y: -139.00002}
+        - {x: 62.18422, y: -96.000015}
+        - {x: 67.18422, y: -58.000015}
+        - {x: 67.18422, y: 44.999985}
+    - name: bearkwalk_1
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 20
+        width: 110
+        height: 248
+      alignment: 9
+      pivot: {x: 0.52870786, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58.157867, y: 124}
+        - {x: -58.157867, y: -124}
+        - {x: 51.842133, y: -124}
+        - {x: 51.842133, y: 124}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

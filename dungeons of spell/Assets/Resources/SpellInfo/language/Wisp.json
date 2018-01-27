@@ -1,0 +1,1 @@
+{ "title": "Wisp","toolTip":"Will-o'-wisp only use one letter but they are 60 different ways to pronounce it! This langauge causes your projectiles to blink when they hit a wall or destructable","subType":4,"cost":6.0,"isActive":false,"projectoryString":"Blink","layers":["BackGround","Player","Destructable"]}

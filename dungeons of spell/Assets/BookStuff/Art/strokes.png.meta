@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: e197b79813141ab42b25559c78ab6f44
+timeCreated: 1486311889
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: strokes_0
+    21300002: strokes_1
+    21300004: strokes_2
+    21300006: strokes_3
+    21300008: strokes_4
+    21300010: strokes_5
+    21300012: strokes_6
+    21300014: strokes_7
+    21300016: strokes_8
+    21300018: strokes_9
+    21300020: strokes_10
+    21300022: strokes_11
+    21300024: strokes_12
+    21300026: strokes_13
+    21300028: strokes_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 50
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: strokes_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 277
+        width: 31
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_1
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 259
+        width: 31
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_2
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 239
+        width: 30
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_3
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 221
+        width: 62
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_4
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 199
+        width: 62
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_5
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 182
+        width: 61
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_6
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 162
+        width: 123
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_7
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 141
+        width: 123
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_8
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 123
+        width: 124
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_9
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 103
+        width: 246
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_10
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 85
+        width: 247
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_11
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 66
+        width: 246
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_12
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 45
+        width: 491
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_13
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 26
+        width: 492
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: strokes_14
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 6
+        width: 492
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

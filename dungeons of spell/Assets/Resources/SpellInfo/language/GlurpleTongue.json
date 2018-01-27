@@ -1,0 +1,1 @@
+{ "title": "GlurpleTongue","toolTip":"The common langauge of the fish folk, this langauge makes your spells bouncey","subType":4,"cost":6.0,"isActive":false,"projectoryString":"BounceProjectory","layers":["BackGround","Player","Destructable"]}

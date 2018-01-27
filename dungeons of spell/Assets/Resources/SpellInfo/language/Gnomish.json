@@ -1,0 +1,1 @@
+{ "title": "Gnomish","toolTip":"Temp","subType":4,"cost":5.0,"isActive":false,"projectoryString":"StickProjectory","layers":["BackGround","Player","Destructable"]}

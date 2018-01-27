@@ -1,0 +1,1 @@
+{"title":"Earth","toolTip":"Modern but rustic... old and new","subType":1,"cost":1.5,"isActive":false,"moveSpeed":1.0,"damageMod":1.0,"priority":3.0,"color":{"r":0.6,"g":0.6,"b":0.5,"a":1.0},"onHitEffectName":"","onCollisionEffectName": "EarthEffect"}

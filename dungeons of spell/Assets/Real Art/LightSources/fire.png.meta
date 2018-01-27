@@ -1,0 +1,247 @@
+fileFormatVersion: 2
+guid: 472890da411a703439f4ea98176a4123
+timeCreated: 1478995206
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: fire_0
+    21300002: fire_1
+    21300004: fire_2
+    21300006: fire_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: fire_0
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 100
+        width: 162
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1, y: 89}
+        - {x: -81, y: 21}
+        - {x: -81, y: -89}
+        - {x: 55, y: -89}
+        - {x: 80, y: -85}
+        - {x: 80, y: 51}
+        - {x: 66, y: 89}
+      - - {x: -22, y: 89}
+        - {x: -23, y: 86}
+        - {x: -23, y: 75}
+        - {x: -16, y: 71}
+        - {x: -1, y: 71}
+        - {x: 3, y: 73}
+        - {x: 3, y: 85}
+        - {x: 0, y: 89}
+    - name: fire_1
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 98
+        width: 142
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 58.5}
+        - {x: -71, y: -7.5}
+        - {x: -71, y: -115.5}
+        - {x: 60, y: -115.5}
+        - {x: 67, y: -101.5}
+        - {x: 67, y: 3.5}
+        - {x: 32, y: 58.5}
+      - - {x: 42, y: 18.5}
+        - {x: 41, y: 14.5}
+        - {x: 41, y: 3.5}
+        - {x: 43, y: 1.5}
+        - {x: 61, y: 1.5}
+        - {x: 65, y: 2.5}
+        - {x: 65, y: 14.5}
+        - {x: 59, y: 18.5}
+      - - {x: 12, y: 87.5}
+        - {x: 8, y: 85.5}
+        - {x: 8, y: 76.5}
+        - {x: 9, y: 72.5}
+        - {x: 25, y: 72.5}
+        - {x: 31, y: 77.5}
+        - {x: 31, y: 83.5}
+        - {x: 27, y: 87.5}
+      - - {x: -33, y: 83.5}
+        - {x: -32, y: 80.5}
+        - {x: -29, y: 80.5}
+        - {x: -27, y: 82.5}
+        - {x: -28, y: 85.5}
+        - {x: -31, y: 85.5}
+      - - {x: -18, y: 117.5}
+        - {x: -27, y: 117.5}
+        - {x: -30, y: 116.5}
+        - {x: -30, y: 107.5}
+        - {x: -27, y: 102.5}
+        - {x: -23, y: 101.5}
+        - {x: -15, y: 101.5}
+        - {x: -14, y: 103.5}
+        - {x: -14, y: 110.5}
+        - {x: -15, y: 114.5}
+    - name: fire_2
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 91
+        width: 155
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -13.5, y: 79.5}
+        - {x: -77.5, y: 4.5}
+        - {x: -77.5, y: -98.5}
+        - {x: -57.5, y: -101.5}
+        - {x: 72.5, y: -101.5}
+        - {x: 77.5, y: -93.5}
+        - {x: 77.5, y: -2.5}
+        - {x: 60.5, y: 79.5}
+      - - {x: -40.5, y: 37.5}
+        - {x: -40.5, y: 36.5}
+        - {x: -38.5, y: 34.5}
+        - {x: -37.5, y: 34.5}
+        - {x: -34.5, y: 37.5}
+        - {x: -34.5, y: 39.5}
+        - {x: -37.5, y: 40.5}
+      - - {x: -42.5, y: 51.5}
+        - {x: -44.5, y: 47.5}
+        - {x: -44.5, y: 43.5}
+        - {x: -42.5, y: 42.5}
+        - {x: -39.5, y: 43.5}
+        - {x: -36.5, y: 49.5}
+        - {x: -38.5, y: 51.5}
+      - - {x: -56.5, y: 48.5}
+        - {x: -53.5, y: 49.5}
+        - {x: -53.5, y: 52.5}
+        - {x: -56.5, y: 53.5}
+        - {x: -58.5, y: 51.5}
+      - - {x: 72.5, y: 64.5}
+        - {x: 75.5, y: 65.5}
+        - {x: 75.5, y: 68.5}
+        - {x: 72.5, y: 69.5}
+        - {x: 70.5, y: 67.5}
+      - - {x: 73.5, y: 97.5}
+        - {x: 58.5, y: 97.5}
+        - {x: 58.5, y: 86.5}
+        - {x: 59.5, y: 80.5}
+        - {x: 70.5, y: 80.5}
+        - {x: 76.5, y: 85.5}
+        - {x: 76.5, y: 92.5}
+    - name: fire_3
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 89
+        width: 182
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: -96}
+        - {x: -88, y: -105}
+        - {x: 79, y: -105}
+        - {x: 79, y: -31}
+        - {x: 42, y: 60}
+        - {x: -25, y: 60}
+        - {x: -90, y: -17}
+      - - {x: 82, y: -44}
+        - {x: 82, y: -51}
+        - {x: 83, y: -56}
+        - {x: 88, y: -56}
+        - {x: 91, y: -54}
+        - {x: 91, y: -45}
+        - {x: 88, y: -44}
+      - - {x: 52, y: 24}
+        - {x: 49, y: 20}
+        - {x: 45, y: 10}
+        - {x: 45, y: 6}
+        - {x: 50, y: 2}
+        - {x: 62, y: 2}
+        - {x: 68, y: 3}
+        - {x: 72, y: 6}
+        - {x: 72, y: 16}
+        - {x: 70, y: 24}
+      - - {x: 11, y: 86}
+        - {x: 7, y: 76}
+        - {x: 7, y: 71}
+        - {x: 14, y: 64}
+        - {x: 24, y: 64}
+        - {x: 37, y: 66}
+        - {x: 39, y: 72}
+        - {x: 39, y: 83}
+        - {x: 38, y: 86}
+      - - {x: -2, y: 84}
+        - {x: -4, y: 83}
+        - {x: -4, y: 79}
+        - {x: -3, y: 76}
+        - {x: 0, y: 74}
+        - {x: 8, y: 74}
+        - {x: 9, y: 75}
+        - {x: 9, y: 79}
+        - {x: 2, y: 84}
+      - - {x: -19, y: 104}
+        - {x: -24, y: 102}
+        - {x: -24, y: 87}
+        - {x: -23, y: 84}
+        - {x: -11, y: 84}
+        - {x: -5, y: 86}
+        - {x: -5, y: 104}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

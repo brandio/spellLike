@@ -1,0 +1,1 @@
+{"title":"VampireBlood","toolTip":"Eww a bloody spell. This will steal enemies blood!!","subType":1,"cost":2,"isActive":false,"moveSpeed":1.0,"damageMod":1,"priority":1.0,"color":{"r":1.0,"g":0.0,"b":0.1,"a":1.0},"onHitEffectName":"VampireOnHitEffect","onCollisionEffectName":""} 

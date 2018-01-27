@@ -1,0 +1,1 @@
+{ "title": "Vampiric","toolTip":"A super sonic longauge, used by vampires and bats, no one has ever seen a vampire","subType":4,"cost":0.0,"isActive":false,"projectoryString":"BasicProjectory","layers":["BackGround","Player","Destructable","Water"]}
