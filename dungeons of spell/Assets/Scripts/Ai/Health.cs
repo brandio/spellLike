@@ -4,8 +4,9 @@ using System.Collections;
 public class Health : MonoBehaviour {
     public float health = 40;
 
-    public AudioClip DeathSound;
-    public AudioSource audioSource;
+    public AudioClip deathSound;
+    public AudioClip damageSound;
+    AudioSource audioSource;
 
     public float experienceOnDeath = 10;
 
@@ -28,7 +29,7 @@ public class Health : MonoBehaviour {
 		if (anim != null) {
 			anim.SetBool("Death", true);
 		}
-        audioSource.clip = DeathSound;
+        audioSource.clip = deathSound;
         audioSource.Play();
         gameObject.GetComponent<Collider2D>().enabled = false;
         StatePatternEnemy pattern = gameObject.GetComponent<StatePatternEnemy>();
@@ -91,8 +92,8 @@ public class Health : MonoBehaviour {
 			
 			if(audioSource)
 			{
-
-				audioSource.Play ();
+                audioSource.clip = damageSound;
+                audioSource.Play ();
 			}
 
 			dmgCoolDown = 0;
@@ -124,6 +125,7 @@ public class Health : MonoBehaviour {
 	void Start () {
         maxHealth = health;
 		audioSource = this.GetComponent<AudioSource> ();
+        audioSource.clip = damageSound;
         if (HealthChanged != null)
         {
             HealthChanged(this);

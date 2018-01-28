@@ -13,7 +13,7 @@ public class BasicEnemyFiller : IEnemyFiller {
             if(Random.Range(0,100) > 40)
             {
                 string delim = System.IO.Path.DirectorySeparatorChar.ToString();
-                GameObject enemy = GameObject.Instantiate(Resources.Load("Enemy" + delim + "Fire Ghost_1") as GameObject, Vector2.zero, Quaternion.identity) as GameObject;
+                GameObject enemy = GameObject.Instantiate(Resources.Load("Enemy" + delim + "Red Lady") as GameObject, Vector2.zero, Quaternion.identity) as GameObject;
                 enemy.SetActive(false);
                 enemies.Add(enemy);
                 enemy.GetComponent<AiMovement>().room = r;
