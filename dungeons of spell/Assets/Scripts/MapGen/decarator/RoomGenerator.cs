@@ -131,7 +131,7 @@ public class RoomGenerator
         }
         x--;
         y--;
-        Debug.Log(x + " " + y);
+
         if (count == 0)
         {
             return;

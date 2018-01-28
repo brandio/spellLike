@@ -16,7 +16,7 @@ public class CelluarRoomFiller : StartRoomFiller
     int randomFillChance = 65;
     bool VerifyRoom()
     {
-        Debug.Log("StartingVerify");
+
         int count = 0;
         IntPair index = new IntPair(-1, -1);
         for (int i = 0; i < grid.GetLength(0); i++)
