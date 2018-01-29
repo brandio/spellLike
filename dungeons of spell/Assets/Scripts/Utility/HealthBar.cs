@@ -16,14 +16,35 @@ public class HealthBar : MonoBehaviour
         image = gameObject.GetComponent<Image>();
         startXScale = transform.localScale.x;
         startXPosition = transform.localPosition.x;
-        image.color = new Color(0, 1, .3f  );
+        image.color = new Color(0, 1, .3f, minAlpha);
         targetScale = startXPosition;
         health.HealthChanged += UpdateHealthBar;
+    }
+
+    float fadeRate = .002f;
+    float minAlpha = .1f;
+    IEnumerator FaidHealth()
+    {
+        Debug.Log("faidin");
+        float i = minAlpha;
+        while (i < 1)
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, i);
+            i = i + fadeRate*10;
+            yield return null;
+        }
+        while (i > minAlpha)
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, i);
+            i = i - fadeRate;
+            yield return null;
+        }
     }
 
     public void UpdateHealthBar(Health health)
     {
         targetScale = health.GetPercent() * startXScale;
+        StartCoroutine("FaidHealth");
     }
         
 

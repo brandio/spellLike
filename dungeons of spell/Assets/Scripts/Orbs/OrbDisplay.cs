@@ -15,6 +15,6 @@ public class OrbDisplay : MonoBehaviour {
 
     void UpdateDisplay(CoinHolder holder)
     {
-        text.text = ("X " +holder.GetCoinCount());
+        text.text = ("" + holder.GetCoinCount());
     }
 }
