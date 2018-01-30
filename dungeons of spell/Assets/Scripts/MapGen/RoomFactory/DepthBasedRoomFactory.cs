@@ -11,6 +11,10 @@ public class DepthBasedRoomFactory : IRoomFillerFactory
 		{
 			return new StartRoomFiller(pos, sizeX, sizeY);
 		}
+        else if(true)
+        {
+            return new MiddleBlockRoom(pos, sizeX, sizeY);
+        }
         else if (sizeX < 16 && sizeY < 16)
         {
             return new TresureRoomFiller(pos, sizeX, sizeY);
