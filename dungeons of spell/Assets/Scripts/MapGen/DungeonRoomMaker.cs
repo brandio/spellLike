@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
 public class DungeonRoomMaker : MonoBehaviour {
 	const int tileSize = 2;
 	public int depth = 0;
@@ -278,16 +278,43 @@ public class DungeonRoomMaker : MonoBehaviour {
 			}
 		}
 
-		foreach (System.Collections.Generic.KeyValuePair<Vector2, node> n in positionToNode) {
-            PlayerRoomManager.instance.Rooms.Add(n.Value.roomBuilder.FillRoom());
+        List<RoomBuilder> roomBuilders = new List<RoomBuilder>();
+        foreach (System.Collections.Generic.KeyValuePair<Vector2, node> n in positionToNode)
+        {
+            roomBuilders.Add(n.Value.roomBuilder);
+        }
+        DetermineDungeon(roomBuilders);
+
+        foreach (System.Collections.Generic.KeyValuePair<Vector2, node> n in positionToNode) {
+            PlayerRoomManager.instance.Rooms.Add(n.Value.roomBuilder.RoomFiller());
             yield return null;
 		}
+
         if(DungeonDone != null)
         {
             DungeonDone();
         }
 	}
 
+    void DetermineDungeon(List<RoomBuilder> roomBuilders)
+    {
+        RoomBuilder bossRoom = roomBuilders[0];
+        List<RoomBuilder> maxDepth = roomBuilders.Where(o => o.depth == depth).ToList().OrderByDescending(o => o.sizeX * o.sizeY).ToList();
+        maxDepth[0].AddRoomFiller(new LakeRoomFiller(maxDepth[0].position, maxDepth[0].sizeX, maxDepth[0].sizeY, maxDepth[0].room, maxDepth[0].doors));
+        maxDepth[1].AddRoomFiller(new MushroomFieldFiller(maxDepth[1].position, maxDepth[1].sizeX, maxDepth[1].sizeY, maxDepth[1].room, maxDepth[1].doors));
+
+        List<RoomBuilder> depthSorted = roomBuilders.OrderByDescending(o => o.depth).ToList();
+        List<RoomBuilder> sizeSorted = roomBuilders.OrderBy(o => o.depth).ToList();
+        foreach (RoomBuilder builder in depthSorted)
+        {
+            if(!builder.hasRoomFiller)
+            {
+                builder.AddRoomFiller(new MiddleBlockRoom(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
+            }
+            Debug.Log(builder.depth);
+        }
+    }
+    
     public delegate void DungeonDoneHandler();
     public event DungeonDoneHandler DungeonDone;
 	bool FindSpace(int xx, int yy, node currentnode, Stack nodes)
@@ -395,8 +422,7 @@ public class DungeonRoomMaker : MonoBehaviour {
 
 	void MakeRoom(node nodeForRoom)
 	{
-
-		nodeForRoom.roomBuilder = new DepthBasedRoomFactory().MakeRoomFiller(nodeForRoom.sizeX,nodeForRoom.sizeY,nodeForRoom.pos,nodeForRoom.count);
+        nodeForRoom.roomBuilder = new RoomBuilder(nodeForRoom.sizeX, nodeForRoom.sizeY, nodeForRoom.pos, nodeForRoom.count);
 	}
 
 	class node
@@ -411,7 +437,7 @@ public class DungeonRoomMaker : MonoBehaviour {
 		public Vector2 pos;
 
 		public HashSet<node> nodes;
-		public IRoomFiller roomBuilder;
+		public RoomBuilder roomBuilder;
 		public node(int c,int x, int y, Vector2 p)
 		{
 			nodes = new HashSet<node>();
