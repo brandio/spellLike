@@ -9,7 +9,7 @@ public class CelluarRoomFiller : StartRoomFiller
     protected int width = 0;
     protected int height = 0;
     protected int blankTiles = 0;
-    public CelluarRoomFiller(Vector2 pos, int x, int y) : base(pos,x,y) {
+    public CelluarRoomFiller(Vector2 pos, int x, int y, Room r, List<Vector2> ds) : base(pos,x,y,r,ds) {
 
     }
 

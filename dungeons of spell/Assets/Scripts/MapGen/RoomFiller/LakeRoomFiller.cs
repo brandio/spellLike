@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 public class LakeRoomFiller : CelluarRoomFiller {
-    public LakeRoomFiller(Vector2 pos, int x, int y) : base(pos,x,y) {
+    public LakeRoomFiller(Vector2 pos, int x, int y, Room r, List<Vector2> ds) : base(pos,x,y,r,ds) {
 
     }
 

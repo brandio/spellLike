@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class MiddleBlockRoom : CelluarRoomFiller
 {
 
 
-    public MiddleBlockRoom(Vector2 pos, int x, int y) : base(pos,x,y) {
+    public MiddleBlockRoom(Vector2 pos, int x, int y, Room r, List<Vector2> ds) : base(pos,x,y,r,ds) {
 
     }
     float randomFillChance = 15;

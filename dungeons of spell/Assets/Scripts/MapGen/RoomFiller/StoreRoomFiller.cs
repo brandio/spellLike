@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class StoreRoomFiller : StartRoomFiller {
 
-	public StoreRoomFiller(Vector2 pos, int x, int y) : base(pos,x,y) {}
+	public StoreRoomFiller(Vector2 pos, int x, int y, Room r, List<Vector2> ds) : base(pos,x,y,r,ds) {}
 
 	public override Room FillRoom()
 	{

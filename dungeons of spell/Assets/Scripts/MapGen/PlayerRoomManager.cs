@@ -44,12 +44,6 @@ public class PlayerRoomManager : MonoBehaviour {
 		}
         
 	}
-	
-    public IRoomFiller MakeRoom(int sizeX, int sizeY, Vector2 pos, int depth)
-    {
-        DepthBasedRoomFactory fillerFactory = new DepthBasedRoomFactory();
-        return fillerFactory.MakeRoomFiller(sizeX, sizeY, pos, depth);
-    }
 
 	void Start () {
 		if (instance != null) {

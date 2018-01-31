@@ -15,12 +15,6 @@ public class StartRoomFiller : IRoomFiller
 	protected Room room;
     protected const int tileSize = 2;
 
-	public void Clear()
-	{
-		GameObject.Destroy (room.gameObject);
-		room.gameObject.SetActive (false);
-	}
-
     public struct IntPair : IEquatable<IntPair>
     {
         public IntPair(int j, int k)
@@ -52,10 +46,9 @@ public class StartRoomFiller : IRoomFiller
         return true;
     }
 
-    public StartRoomFiller(Vector2 pos, int x, int y)
+    public StartRoomFiller(Vector2 pos, int x, int y, Room r, List<Vector2> ds)
 	{
-		GameObject newRoom = new GameObject ();
-		room = newRoom.AddComponent<Room> () as Room;
+        room = r;
 		transform = room.transform;
 		transform.position = pos;
        
@@ -71,9 +64,14 @@ public class StartRoomFiller : IRoomFiller
         }
         minEdges = new Vector2(transform.position.x, transform.position.y);
         maxEdges = new Vector2 (sizeX * tileSize + transform.position.x, sizeY * tileSize + transform.position.y);
-       // Debug.DrawLine(minEdges, maxEdges, Color.green, 10);
         room.pathFindingNodes = new List<PathFindingNode> ();
-		doors = new List<Vector2> ();
+        doors = ds;
+        foreach(Vector2 doorPos in doors)
+        {
+            int xPos = (int)(doorPos.x - transform.position.x) / tileSize;
+            int yPos = (int)(doorPos.y - transform.position.y) / tileSize;
+            grid[xPos, yPos] = "R";
+        }
 	}
 
 	public void AddDoor(Vector2 pos)

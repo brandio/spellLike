@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class TresureRoomFiller : StartRoomFiller
 {
     const float chestChance = 3;
-    public TresureRoomFiller(Vector2 pos, int x, int y) : base(pos,x,y) {
+    public TresureRoomFiller(Vector2 pos, int x, int y, Room r, List<Vector2> ds) : base(pos,x,y,r,ds) {
 
     }
 

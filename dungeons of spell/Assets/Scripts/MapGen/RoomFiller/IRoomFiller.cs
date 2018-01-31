@@ -8,5 +8,5 @@ public interface IRoomFiller
 
 	void AddDoor(Vector2 pos);
 
-	void Clear();
+	//void Clear();
 }

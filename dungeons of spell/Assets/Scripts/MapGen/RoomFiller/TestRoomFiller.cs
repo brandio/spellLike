@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class TestRoomFiller : StartRoomFiller
 {
     const int size = 20;
     string[,] myGrid;
-    public TestRoomFiller(Vector2 pos, int x, int y) : base(pos,x,y) {
+    public TestRoomFiller(Vector2 pos, int x, int y, Room r, List<Vector2> ds) : base(pos,x,y,r,ds) {
 
         myGrid = new string[size, size]
         {
@@ -25,9 +25,8 @@ public class TestRoomFiller : StartRoomFiller
             {"X","O","O","O","O","X","O","O","O","O","O","M","M","M","M","M","X","O","O","X"},
             {"X","O","O","O","O","X","O","O","O","O","O","O","O","O","O","X","X","O","O","X"},
             {"X","O","O","O","O","X","O","O","O","O","O","O","O","O","O","O","O","O","O","X"},
-            {"X","O","O","O","O","X","O","O","O","O","O","O","O","O","O","O","O","O","O","X"},
-            {"X","O","O","O","O","X","O","O","O","O","O","O","O","O","O","O","O","O","O","X"},
-            {"X","O","O","O","O","X","O","O","O","O","O","O","O","O","O","O","O","O","O","X"},
+            {"X","O","O","O","O","X","O","O","M","M","M","O","O","O","O","O","O","O","O","X"},
+            {"X","O","O","O","O","X","O","O","M","M","M","O","O","O","O","O","O","O","O","X"},
             {"X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X","X"}
         };
     }
