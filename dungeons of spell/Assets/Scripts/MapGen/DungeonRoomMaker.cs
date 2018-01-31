@@ -303,6 +303,15 @@ public class DungeonRoomMaker : MonoBehaviour {
         maxDepth[0].AddRoomFiller(new LakeRoomFiller(maxDepth[0].position, maxDepth[0].sizeX, maxDepth[0].sizeY, maxDepth[0].room, maxDepth[0].doors));
         maxDepth[1].AddRoomFiller(new MushroomFieldFiller(maxDepth[1].position, maxDepth[1].sizeX, maxDepth[1].sizeY, maxDepth[1].room, maxDepth[1].doors));
 
+        RoomBuilder portalRoom = maxDepth[maxDepth.Count - 1];
+        RoomBuilder portalRoom2 = maxDepth[maxDepth.Count - 2];
+        PortalRoomFiller portalRoomFiller1 = new PortalRoomFiller(portalRoom.position, portalRoom.sizeX, portalRoom.sizeY, portalRoom.room, portalRoom.doors);
+        PortalRoomFiller portalRoomFiller2 = new PortalRoomFiller(portalRoom2.position, portalRoom2.sizeX, portalRoom2.sizeY, portalRoom2.room, portalRoom2.doors);
+        portalRoomFiller1.destinationRoom = portalRoomFiller2;
+        portalRoomFiller2.destinationRoom = portalRoomFiller1;
+        portalRoom.AddRoomFiller(portalRoomFiller1);
+        portalRoom2.AddRoomFiller(portalRoomFiller2);
+
         List<RoomBuilder> depthSorted = roomBuilders.OrderByDescending(o => o.depth).ToList();
         List<RoomBuilder> sizeSorted = roomBuilders.OrderBy(o => o.depth).ToList();
         foreach (RoomBuilder builder in depthSorted)

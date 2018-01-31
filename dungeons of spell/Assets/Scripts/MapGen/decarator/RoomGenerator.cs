@@ -176,6 +176,7 @@ public class RoomGenerator
     C = Chest
     F = Flowers
     MS = Mushroom
+    Portal = Portal
     ==================
     B = BigTree
     */

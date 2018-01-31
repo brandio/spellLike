@@ -17,7 +17,7 @@ public class Room : MonoBehaviour
 
     bool active = false;
 
-    public void Activate(Transform playerTransform)
+    public void Activate()
     {
         if (active)
         {

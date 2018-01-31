@@ -36,7 +36,7 @@ public class PlayerRoomManager : MonoBehaviour {
             r.DeActivate();
         }
 
-        newRoom.Activate(playerMov.transform);
+        newRoom.Activate();
 
 		foreach(IRoomChangeListener listener in roomChangeListeners)
 		{
