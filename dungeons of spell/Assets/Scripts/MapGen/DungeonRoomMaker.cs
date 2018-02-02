@@ -300,7 +300,7 @@ public class DungeonRoomMaker : MonoBehaviour {
     {
         RoomBuilder bossRoom = roomBuilders[0];
         List<RoomBuilder> maxDepth = roomBuilders.Where(o => o.depth == depth).ToList().OrderByDescending(o => o.sizeX * o.sizeY).ToList();
-        maxDepth[0].AddRoomFiller(new LakeRoomFiller(maxDepth[0].position, maxDepth[0].sizeX, maxDepth[0].sizeY, maxDepth[0].room, maxDepth[0].doors));
+        maxDepth[0].AddRoomFiller(new MiddleBlockRoom(maxDepth[0].position, maxDepth[0].sizeX, maxDepth[0].sizeY, maxDepth[0].room, maxDepth[0].doors));
         maxDepth[1].AddRoomFiller(new MushroomFieldFiller(maxDepth[1].position, maxDepth[1].sizeX, maxDepth[1].sizeY, maxDepth[1].room, maxDepth[1].doors));
 
         RoomBuilder portalRoom = maxDepth[maxDepth.Count - 1];
@@ -318,7 +318,7 @@ public class DungeonRoomMaker : MonoBehaviour {
         {
             if(!builder.hasRoomFiller)
             {
-                builder.AddRoomFiller(new MiddleBlockRoom(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
+                builder.AddRoomFiller(new LakeRoomFiller(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
             }
             Debug.Log(builder.depth);
         }
