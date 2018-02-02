@@ -39,7 +39,7 @@ Category {
 				float4 vertex : SV_POSITION;
 				fixed4 color : COLOR;
 				float2 texcoord : TEXCOORD0;
-				UNITY_FOG_COORDS(1)
+				//UNITY_FOG_COORDS(1)
 				#ifdef SOFTPARTICLES_ON
 				float4 projPos : TEXCOORD2;
 				#endif
