@@ -89,7 +89,7 @@
     fixed4 frag(v2f IN) : SV_Target
     {
         float2 disp = tex2D(_DisplaceTex, IN.texcoord.xy + frac(_Time.x *  float2(_SpeedX, _SpeedY))).xy;
-        disp = ((disp * 2) - 1) * _Magnitude * _SinTime.z;
+        disp = ((disp * 2) - 1) * _Magnitude * _SinTime.z ;
         fixed4 c = SampleSpriteTexture(IN.texcoord + disp) * IN.color;
         //fixed4 c = SampleSpriteTexture(IN.texcoord);
         //c.a = IN.color.a;
