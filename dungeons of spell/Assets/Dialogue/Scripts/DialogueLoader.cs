@@ -36,8 +36,13 @@ public class DialogueLoader : MonoBehaviour {
         file.Close();
     }
 
-    public Conversation GetConversation(int id)
+    public List<Conversation> GetConversations(int[] ids)
     {
-        return conversations[id];
+        List<Conversation> convos = new List<Conversation>();
+        foreach (int id in ids)
+        {
+            convos.Add(conversations[id]);
+        }
+        return convos;
     }
 }

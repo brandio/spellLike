@@ -13,17 +13,18 @@ public class Dialogue : MonoBehaviour {
 
     Controls characterControls;
 
-    DialogueLoader.Conversation currentConversation;
+    List<DialogueLoader.Conversation> currentConversations;
     int i;
     void Update()
     {
         if (i > 10 && i < 12 )
         {
-            StartConversation(0, null, null);
+            int[] ids = { 0 };
+            StartConversation(ids, null, null);
         }
         i++;
     }
-    void StartConversation(int conversationId, DialogueParticipant lhsParticipant, DialogueParticipant rhsParticipant)
+    void StartConversation(int[] conversationId, DialogueParticipant lhsParticipant, DialogueParticipant rhsParticipant)
     {
         mLhsParticipant = lhsParticipant;
         mRhsParticipant = rhsParticipant;
@@ -31,21 +32,21 @@ public class Dialogue : MonoBehaviour {
         {
             characterControls.enabled = false;
         }
-        currentConversation = dialogueLoader.GetConversation(conversationId);
-        List< string > strings = new List<string>() { currentConversation.text };
-        dialogueUi.DisplayText(currentConversation.side, strings);
+        currentConversations = dialogueLoader.GetConversations(conversationId);
+        List< string > strings = new List<string>() { currentConversations[0].text };
+        dialogueUi.DisplayText(currentConversations[0].side, strings);
     }
 
     public void UpdateConversation()
     {
         
-        if(currentConversation.childrenIds.Length == 0)
+        if(currentConversations[0].childrenIds.Length == 0)
         {
             EndConversation();
         }
         else
         {
-            StartConversation(currentConversation.childrenIds[0], null, null);
+            StartConversation(currentConversations[0].childrenIds, null, null);
         }
     }
 

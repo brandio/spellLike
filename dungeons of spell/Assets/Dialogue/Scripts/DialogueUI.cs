@@ -57,7 +57,8 @@ public class DialogueUI : MonoBehaviour {
             {
                 GameObject dialogueObject = GameObject.Instantiate(mDialogueObject, Vector2.zero, Quaternion.identity) as GameObject;
                 dialogueObject.transform.SetParent(lhsPanel.transform);
-                dialogueObject.transform.localPosition = new Vector2(0,i * dialoguePosition);
+                dialogueObject.transform.localPosition = new Vector2(350, 40 + i * dialoguePosition);
+                dialogueObject.transform.localScale = new Vector3(.1f, .1f, 1);
                 dialogueObject.GetComponent<Text>().text = textList[i];
             }
         }

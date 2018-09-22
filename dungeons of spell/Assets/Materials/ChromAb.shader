@@ -97,14 +97,17 @@
     fixed4 frag(v2f IN) : SV_Target
     {
         fixed4 c = SampleSpriteTexture(IN.texcoord) * IN.color;
-    fixed4 blue = SampleSpriteTexture(IN.texcoord + float2 (_OffsetBlueX, _OffsetBlueY)) * IN.color;
-    fixed4 red = SampleSpriteTexture(IN.texcoord + float2 (_OffsetRedX, _OffsetRedY)) * IN.color;
-    fixed4 green = SampleSpriteTexture(IN.texcoord + float2 (_OffsetGreenX, _OffsetGreenY)) * IN.color;
+        fixed4 blue = SampleSpriteTexture(IN.texcoord + float2 (_OffsetBlueX, _OffsetBlueY)) * IN.color;
+        fixed4 red = SampleSpriteTexture(IN.texcoord + float2 (_OffsetRedX, _OffsetRedY)) * IN.color;
+        fixed4 green = SampleSpriteTexture(IN.texcoord + float2 (_OffsetGreenX, _OffsetGreenY)) * IN.color;
 
-    c.a = (green.a + blue.a + red.a) / 3;
-    c.g = green.g * green.a;
-    c.b = blue.b * blue.a;
-    c.r = red.r * red.a;
+        c.a = (green.a + blue.a + red.a) / 3;
+        c.g = green.g * green.a;
+        c.b = blue.b * blue.a;
+        c.r = red.r * red.a;
+
+
+
 
     return c;
 

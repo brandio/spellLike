@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
     float minAlpha = .1f;
     IEnumerator FaidHealth()
     {
-        Debug.Log("faidin");
+        //Debug.Log("faidin");
         float i = minAlpha;
         while (i < 1)
         {

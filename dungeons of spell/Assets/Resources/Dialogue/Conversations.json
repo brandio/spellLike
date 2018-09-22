@@ -1,2 +1,3 @@
-{"text":"Hi my name is waifu","id":0,"side":1,"childrenIds": [1]} 
-{"text":"Nice to meet you waifu","id":1,"side":0,"childrenIds": [0]}
+{"text":"Hi my name is waifu","id":0,"side":1,"childrenIds": [1,2]}
+{"text":"Get the fuck of my lawn you damn hippy","id":1,"side":0,"childrenIds": [0]} 
+{"text":"Nice to meet you waifu","id":2,"side":0,"childrenIds": [0]}

@@ -318,7 +318,7 @@ public class DungeonRoomMaker : MonoBehaviour {
         {
             if(!builder.hasRoomFiller)
             {
-                builder.AddRoomFiller(new LakeRoomFiller(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
+                builder.AddRoomFiller(new MiddleBlockRoom   (builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
             }
             Debug.Log(builder.depth);
         }
