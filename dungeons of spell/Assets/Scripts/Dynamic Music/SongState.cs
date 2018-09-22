@@ -13,6 +13,7 @@ public abstract class SongState : MonoBehaviour {
     public List<AudioClip> ambient;
     Dictionary<Song.track, List<AudioClip>> trackToClipList;
     HashSet<Song.track> tracks;
+    protected List<Song.track> usedTracks;
     protected Song song;
 
     void Awake()
@@ -58,6 +59,7 @@ public abstract class SongState : MonoBehaviour {
     }
 
     public abstract void InitState();
+    public abstract void LeaveState();
 
     void ExitState()
     {

@@ -13,8 +13,14 @@ public class OutOfBattleState : SongState {
 
     }
 
+    public override void LeaveState()
+    {
+
+    }
+
     // Update is called once per frame
-    void Update () {
+    void Update ()
+    {
 	
 	}
 }

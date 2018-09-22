@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-public class Song : MonoBehaviour
+public class Song : MonoBehaviour, IRoomChangeListener
 {
+    public PlayerRoomManager roomManager;
     public enum track { Drums, Percs, Melody, Lead, Bass, Ambient, Empty };
     public HashSet<track> freeTracks = new HashSet<track>() { track.Drums, track.Percs, track.Melody, track.Lead, track.Bass, track.Ambient };
     public HashSet<track> usedTracks = new HashSet<track>();
@@ -23,11 +24,38 @@ public class Song : MonoBehaviour
     public SongState battle;
     public SongState auxRoom;
     public SongState defaults;
-    public SongState currentState;
 
+    SongState currentState;
+
+    public void RoomClearedEventListener(Room r)
+    {
+        ChangeState(defaults);
+    }
+
+    public void RoomChanged(Room room)
+    {
+        if(room.enemies.Count > 0)
+        {
+            ChangeState(battle);
+            room.RoomCleared += RoomClearedEventListener;
+        }
+    }
+    
+    void ChangeState(SongState state)
+    {
+        if(state == currentState)
+        {
+            return;
+        }
+        currentState.LeaveState();
+        currentState = state;
+        state.InitState();
+    }
     // Use this for initialization
     void Start()
     {
+        roomManager = PlayerRoomManager.instance;
+        roomManager.Register(this);
         trackToAudioSourceMap.Add(track.Drums,new List<AudioSource>(){ drums });
         trackToAudioSourceMap.Add(track.Percs, new List<AudioSource>() { percs });
         trackToAudioSourceMap.Add(track.Melody, new List<AudioSource>() { melody });

@@ -23,10 +23,18 @@ public class OtherSongState : SongState {
                 return;
             }
             AudioClip clip = GetClip(track);
+            usedTracks.Add(track);
             song.StartTrack(clip, track);
         }
     }
 
+    public override void LeaveState()
+    {
+        foreach(Song.track track in usedTracks)
+        {
+            song.StopTrack(track);
+        }
+    }
     // Use this for initialization
     void Start () {
 	
