@@ -11,9 +11,9 @@ public abstract class SongState : MonoBehaviour {
     public List<AudioClip> leads;
     public List<AudioClip> basses;
     public List<AudioClip> ambient;
-    Dictionary<Song.track, List<AudioClip>> trackToClipList;
-    HashSet<Song.track> tracks;
-    protected List<Song.track> usedTracks;
+    Dictionary<Song.track, List<AudioClip>> trackToClipList = new Dictionary<Song.track, List<AudioClip>>();
+    HashSet<Song.track> tracks = new HashSet<Song.track>();
+    protected List<Song.track> usedTracks = new List<Song.track>();
     protected Song song;
 
     void Awake()
@@ -37,12 +37,14 @@ public abstract class SongState : MonoBehaviour {
 
     protected Song.track GetRandomFreeTrack()
     {
-        HashSet<Song.track> freeTracks = tracks.Union(song.GetFreeTracks()) as HashSet<Song.track>;
-        if(freeTracks.Count == 0)
+
+        System.Collections.Generic.IEnumerable<Song.track> freeTracksE = tracks.Union(song.GetFreeTracks());
+        List<Song.track> freeTracks = freeTracksE.ToList();
+        if (freeTracks.Count == 0)
         {
             return Song.track.Empty;
         }
-        return freeTracks.ToArray()[Random.Range(0,freeTracks.Count)];
+        return freeTracks[Random.Range(0,freeTracks.Count)];
     }
 
     protected AudioClip GetClip(Song.track track)
@@ -65,9 +67,6 @@ public abstract class SongState : MonoBehaviour {
     {
 
     }
-	
-	public void UpdateSongState () 
-    {
-	
-	}
+
+    public abstract void UpdateSongState();
 }

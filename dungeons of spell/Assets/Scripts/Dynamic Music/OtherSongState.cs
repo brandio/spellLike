@@ -28,6 +28,11 @@ public class OtherSongState : SongState {
         }
     }
 
+    public override void UpdateSongState()
+    {
+
+    }
+
     public override void LeaveState()
     {
         foreach(Song.track track in usedTracks)

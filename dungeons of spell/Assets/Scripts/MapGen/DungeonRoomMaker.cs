@@ -316,11 +316,19 @@ public class DungeonRoomMaker : MonoBehaviour {
         List<RoomBuilder> sizeSorted = roomBuilders.OrderBy(o => o.depth).ToList();
         foreach (RoomBuilder builder in depthSorted)
         {
+
             if(!builder.hasRoomFiller)
             {
-                builder.AddRoomFiller(new MiddleBlockRoom   (builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
+                if (Random.Range(0, 100) > 32)
+                {
+                    builder.AddRoomFiller(new MiddleBlockRoom(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
+                }
+                else
+                {
+                    builder.AddRoomFiller(new LakeRoomFiller(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
+                }
             }
-            Debug.Log(builder.depth);
+            //Debug.Log(builder.depth);
         }
     }
     

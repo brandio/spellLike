@@ -27,6 +27,15 @@ public class Song : MonoBehaviour, IRoomChangeListener
 
     SongState currentState;
 
+    IEnumerator FadeIn(AudioSource source)
+    {
+        source.volume = 0;
+        while (source.volume < .9)
+        {
+            yield return new WaitForSeconds(.1f);
+            source.volume += .01f;
+        }
+    }
     public void RoomClearedEventListener(Room r)
     {
         ChangeState(defaults);
@@ -43,6 +52,7 @@ public class Song : MonoBehaviour, IRoomChangeListener
     
     void ChangeState(SongState state)
     {
+        Debug.Log("Changing state");
         if(state == currentState)
         {
             return;
@@ -69,6 +79,7 @@ public class Song : MonoBehaviour, IRoomChangeListener
 
     public void StartTrack(AudioClip clip, track track)
     {
+        Debug.Log("Starting track");
         if(track == track.Ambient)
         {
             return;
@@ -82,6 +93,7 @@ public class Song : MonoBehaviour, IRoomChangeListener
             source.clip = clip;
             source.Play();
             source.time = background.time;
+            StartCoroutine(FadeIn(source));
         }
     }
 
