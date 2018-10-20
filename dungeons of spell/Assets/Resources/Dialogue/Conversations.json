@@ -1,3 +1,5 @@
-{"text":"Hi my name is waifu","id":0,"side":1,"childrenIds": [1,2]}
-{"text":"Get the fuck of my lawn you damn hippy","id":1,"side":0,"childrenIds": [0]} 
-{"text":"Nice to meet you waifu","id":2,"side":0,"childrenIds": [0]}
+{"text":"Hi my name is waifu","id":0,"side":1,"childrenIds": [1]}
+{"text":"Nice to meet you waifu","id":1,"side":0,"childrenIds": [2]}
+{"text":"Do you have a moment? I am hear to share the wishes of our might lord Buddah. With three easy payments of 19.99$ I can send you a video series that will chanege your life.","id":2,"side":1,"childrenIds": [3,4]}
+{"text":"Get the fuck of my lawn you damn hippy","id":3,"side":0,"childrenIds": []} 
+{"text":"Ummm, could you repeat that?","id":4,"side":0,"childrenIds": [2]}

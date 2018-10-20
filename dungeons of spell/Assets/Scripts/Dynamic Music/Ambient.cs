@@ -19,6 +19,7 @@ public class Ambient : MonoBehaviour {
     public float maxVolum = 1;
     IEnumerator FadeIn(AudioSource source)
     {
+        source.Play();
         source.volume = 0;
         while (source.volume < maxVolum )
         {
@@ -29,6 +30,7 @@ public class Ambient : MonoBehaviour {
 
     public void StartTrack()
     {
+        Debug.Log("Add track");
         if(clipsInUse > maxTracks || clipsNotInUse.Count == 0 || sourcesNotInUse.Count == 0)
         {
             return;
@@ -48,13 +50,20 @@ public class Ambient : MonoBehaviour {
 
     public void StopTrack()
     {
-        if(clipsInUse == 0)
+        Debug.Log("Stop track");
+
+        if (clipsInUse == 0)
         {
             return;
         }
         else
         {
             clipsInUse--;
+            int index = Random.Range(0, sourcesInUse.Count);
+            clipsNotInUse.Add(sourcesInUse[index].clip);
+            sourcesNotInUse.Add(sourcesInUse[index]);
+            sourcesInUse[index].Stop();
+            sourcesInUse.RemoveAt(index);
         }
     }
 
@@ -71,10 +80,7 @@ public class Ambient : MonoBehaviour {
             StartTrack();
         }
         nextTime = GetNextTime();
-        int index = Random.Range(0, sourcesInUse.Count);
-        clipsNotInUse.Add(sourcesInUse[index].clip);
-        sourcesInUse.RemoveAt(index);
-        clipsInUse--;
+
     }
 	
 	// Update is called once per frame
@@ -82,7 +88,7 @@ public class Ambient : MonoBehaviour {
     {
 	    if(Time.time > nextTime)
         {
-            int max = clipsInUse > averageTracks ? 120 : 80;
+            int max = clipsInUse < averageTracks ? 120 : 80;
             if(clipsInUse == averageTracks)
             {
                 max = 100;

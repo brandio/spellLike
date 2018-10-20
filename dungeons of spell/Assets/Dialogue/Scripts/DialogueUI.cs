@@ -7,17 +7,24 @@ public class DialogueUI : MonoBehaviour {
     public GameObject rhsPanel;
     public GameObject lhsPanel;
 
+    public Image rhsSprite;
+    public Image lhsSprite;
+    public Text rhsTitle;
+    public Text lhsTitle;
     public Text rhsTextField;
     public float charactersPerSecond = 4;
 
-    public enum DialogueUiState {rhs,lhs,fillingRhs }
+    public enum DialogueUiState {rhs,lhs,lhsChoice,fillingLhs,fillingRhs }
     public DialogueUiState currentState = DialogueUiState.rhs;
 
     public Dialogue dialogue;
 
     public GameObject mDialogueObject;
 
-    public float dialoguePosition = 5;
+    public List<Text> lhsTextFields;
+    public List<Image> options;
+
+    int selectedOption = 0;
     List<GameObject> dialogueObjects = new List<GameObject>();
     void Update()
     {
@@ -29,13 +36,38 @@ public class DialogueUI : MonoBehaviour {
                 case DialogueUiState.fillingRhs:
                     currentState = DialogueUiState.rhs;
                     break;
-                case DialogueUiState.rhs:
-                    dialogue.UpdateConversation();
+                case DialogueUiState.fillingLhs:
+                    currentState = DialogueUiState.lhs;
                     break;
+                case DialogueUiState.rhs:
                 case DialogueUiState.lhs:
-                    dialogue.UpdateConversation();
+                    dialogue.UpdateConversation(0);
+                    break;
+                case DialogueUiState.lhsChoice:
+                    dialogue.UpdateConversation(selectedOption);
                     break;
             }
+        }
+        if (currentState == DialogueUiState.lhsChoice && (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow)))
+        {
+            if(Input.GetKeyUp(KeyCode.DownArrow) && selectedOption <= (options.Count - 1))
+            {
+                SetOption(selectedOption + 1);
+            }
+            else if (Input.GetKeyUp(KeyCode.UpArrow) && selectedOption > -1)
+            {
+                SetOption(selectedOption - 1);
+            }
+        }
+    }
+
+    void SetOption(int option)
+    {
+        selectedOption = option;
+        for(int i = 0; i < options.Count; i++)
+        {
+            bool enabled = option == i ? true : false;
+            options[i].enabled = enabled;
         }
     }
 
@@ -49,41 +81,62 @@ public class DialogueUI : MonoBehaviour {
         if (rhs)
         {
             string text = textList[0];
-            StartCoroutine(DisplayTextOverTime(text));
+            StartCoroutine(DisplayTextOverTime(intRhs, text));
         }
         else
         {
-            for(int i = 0; i < textList.Count; i++)
+            if(textList.Count == 1)
             {
-                GameObject dialogueObject = GameObject.Instantiate(mDialogueObject, Vector2.zero, Quaternion.identity) as GameObject;
-                dialogueObject.transform.SetParent(lhsPanel.transform);
-                dialogueObject.transform.localPosition = new Vector2(350, 40 + i * dialoguePosition);
-                dialogueObject.transform.localScale = new Vector3(.1f, .1f, 1);
-                dialogueObject.GetComponent<Text>().text = textList[i];
+                lhsTextFields[0].enabled = false;
+                lhsTextFields[1].enabled = false;
+                lhsTextFields[2].enabled = true;
+                SetOption(-1);
+                StartCoroutine(DisplayTextOverTime(intRhs, textList[0]));
+            }
+            else
+            {
+                lhsTextFields[0].enabled = true;
+                lhsTextFields[0].text = textList[0];
+                lhsTextFields[1].enabled = true;
+                lhsTextFields[1].text = textList[1];
+                lhsTextFields[2].enabled = false;
+                SetOption(0);
+                currentState = DialogueUiState.lhsChoice;
             }
         }
     }
 
-    public IEnumerator DisplayTextOverTime(string text)
+    IEnumerator DisplayTextOverTime(int rhs, string text)
     {
         float numberOfCharacters = 0;
-        currentState = DialogueUiState.fillingRhs;
-        while (currentState == DialogueUiState.fillingRhs)
+        Text textField;
+        if (rhs == 1)
+        {
+            currentState = DialogueUiState.fillingRhs;
+            textField = rhsTextField;
+        }
+        else
+        {
+            currentState = DialogueUiState.fillingLhs;
+            textField = lhsTextFields[2];
+        }
+        while (currentState == DialogueUiState.fillingRhs || currentState == DialogueUiState.fillingLhs)
         {
             numberOfCharacters += charactersPerSecond * Time.deltaTime;
-            
-            if(numberOfCharacters >= text.Length)
+
+            if (numberOfCharacters >= text.Length)
             {
                 numberOfCharacters = text.Length;
-                if(currentState == DialogueUiState.fillingRhs)
+                if (currentState == DialogueUiState.fillingRhs)
                     currentState = DialogueUiState.rhs;
+                if (currentState == DialogueUiState.fillingLhs)
+                    currentState = DialogueUiState.lhs;
             }
             string textToInsert = text.Substring(0, (int)Mathf.Ceil(numberOfCharacters));
-            rhsTextField.text = textToInsert;
+            textField.text = textToInsert;
             yield return null;
         }
         currentState = DialogueUiState.rhs;
-        rhsTextField.text = text;
+        textField.text = text;
     }
-
 }
