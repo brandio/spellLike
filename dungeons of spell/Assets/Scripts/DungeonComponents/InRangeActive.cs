@@ -6,12 +6,42 @@ public class InRangeActive : MonoBehaviour {
 
 	protected bool playerInside = false;
 	protected GameObject player;
+    public Material mat;
+
+    void Awake()
+    {
+        SpriteRenderer renderer = this.GetComponent<SpriteRenderer>();
+        if(renderer != null)
+        {
+            mat = renderer.material;
+        }
+    }
+
+    IEnumerator MakeOutline()
+    {
+        float outline = 1.0f;
+        while(playerInside && outline < 1.05f)
+        {
+            outline += 0.001f;
+            yield return new WaitForSeconds(0.01f);
+            mat.SetFloat("_Outline", outline);
+
+        }
+        if(!playerInside)
+        {
+            mat.SetFloat("_Outline", 1);
+
+        }
+    }
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			player = other.gameObject;
-			playerInside = true;
+            playerInside = true;
+
+            if (mat != null)
+                StartCoroutine("MakeOutline");
+            player = other.gameObject;
 		}
 	}
 	
@@ -19,7 +49,9 @@ public class InRangeActive : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			playerInside = false;
+            if (mat != null)
+                mat.SetFloat("_Outline", 1.00f);
+            playerInside = false;
 		}
 	}
 

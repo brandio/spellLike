@@ -4,6 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 public class DialogueUI : MonoBehaviour {
 
+    public AudioSource talkingSound;
+    public AudioSource optionSound;
+
     public GameObject rhsPanel;
     public GameObject lhsPanel;
 
@@ -52,10 +55,12 @@ public class DialogueUI : MonoBehaviour {
         {
             if(Input.GetKeyUp(KeyCode.DownArrow) && selectedOption <= (options.Count - 1))
             {
+                optionSound.Play();
                 SetOption(selectedOption + 1);
             }
-            else if (Input.GetKeyUp(KeyCode.UpArrow) && selectedOption > -1)
+            else if (Input.GetKeyUp(KeyCode.UpArrow) && selectedOption > 0)
             {
+                optionSound.Play();
                 SetOption(selectedOption - 1);
             }
         }
@@ -112,14 +117,17 @@ public class DialogueUI : MonoBehaviour {
         Text textField;
         if (rhs == 1)
         {
+            talkingSound.panStereo = .9f;
             currentState = DialogueUiState.fillingRhs;
             textField = rhsTextField;
         }
         else
         {
+            talkingSound.panStereo = .1f;
             currentState = DialogueUiState.fillingLhs;
             textField = lhsTextFields[2];
         }
+        talkingSound.Play();
         while (currentState == DialogueUiState.fillingRhs || currentState == DialogueUiState.fillingLhs)
         {
             numberOfCharacters += charactersPerSecond * Time.deltaTime;
