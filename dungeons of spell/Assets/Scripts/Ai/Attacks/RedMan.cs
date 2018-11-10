@@ -7,7 +7,7 @@ public class RedMan : MonoBehaviour {
 	void Start () {
         EnemyShoot shoot = this.GetComponent<EnemyShoot>();
         NonMonoSpellGrid grid = new NonMonoSpellGrid(6, 6);
-        Ink ink = ComponentLoader.GetInstance().LoadComponent(new ComponentLoader.UnLoadedSpellComponent("Slit-Faced Serum", SpellComponent.SubSpellComponentType.Ink)) as Ink;
+        Ink ink = ComponentLoader.GetInstance().LoadComponent(new ComponentLoader.UnLoadedSpellComponent("SootExtract", SpellComponent.SubSpellComponentType.Ink)) as Ink;
         grid.SetInk(ink);
         grid.SetPixel(2, 2, true);
         grid.SetPixel(2, 3, true);

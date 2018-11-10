@@ -56,11 +56,13 @@ public class StatePatternEnemy : MonoBehaviour {
         if (startState == null)
         {
             currentState = new ObserveState(this);
+            currentState.EnterState();
         }
         else
         {
             IEnemyState startingState = startState as IEnemyState;
             currentState = startingState;
+            currentState.EnterState();
         }
     }
 

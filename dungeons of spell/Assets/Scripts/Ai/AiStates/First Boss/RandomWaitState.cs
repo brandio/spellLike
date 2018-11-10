@@ -3,17 +3,19 @@ using System.Collections;
 using System;
 
 public class RandomWaitState : MonoBehaviour, IEnemyState {
-    float min;
-    float max;
+    public float min;
+    public float max;
     
     public StatePatternEnemy spe;
     IEnumerator WaitRandomTime()
     {
         yield return new WaitForSeconds(UnityEngine.Random.Range(min, max));
-
+        spe.ChangeState(new ChaseState(spe));
     }
     public void EnterState()
     {
+        Debug.Log("starting state :-)");
+        StartCoroutine("WaitRandomTime");
     }
 
     public void ExitState()

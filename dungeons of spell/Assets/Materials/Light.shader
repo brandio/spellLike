@@ -41,7 +41,7 @@ Category {
 				float2 texcoord : TEXCOORD0;
 				//UNITY_FOG_COORDS(1)
 				#ifdef SOFTPARTICLES_ON
-				float4 projPos : TEXCOORD2;
+				//float4 projPos : TEXCOORD2;
 				#endif
 			};
 			
