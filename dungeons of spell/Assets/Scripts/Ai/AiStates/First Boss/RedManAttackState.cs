@@ -17,7 +17,7 @@ public class RedManAttackState : IEnemyState
         numberOfAttacks++;
         if(numberOfAttacks >= statePatternEnemy.numberOfAttacks)
         {
-            statePatternEnemy.ChangeState(new ChaseState(statePatternEnemy));
+            statePatternEnemy.ChangeState(new RedManChaseState(statePatternEnemy));
         }
     }
 

@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class RedManChaseState : IEnemyState {
-	StatePatternEnemy statePatternEnemy;
+	StatePatternRedMan statePatternEnemy;
 
 	public RedManChaseState(StatePatternEnemy spe)
 	{
-		statePatternEnemy = spe;
+		statePatternEnemy = (StatePatternRedMan)spe;
         statePatternEnemy.anim.SetBool("Walking", true);
     }
 
@@ -22,6 +22,10 @@ public class RedManChaseState : IEnemyState {
 
 	public void UpdateState()
 	{
+        if(statePatternEnemy.ReadyToMirror())
+        {
+            statePatternEnemy.ChangeState(new MirrorImageState(statePatternEnemy));
+        }
         Movement player = statePatternEnemy.GetPlayer();
         if(player != null)
         {
