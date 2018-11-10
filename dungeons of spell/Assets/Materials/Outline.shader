@@ -7,7 +7,7 @@
         [MaterialToggle] PixelSnap("Pixel snap", Float) = 0
 
 
-        _OutlineColor("Outline Color", Color) = (0,0,0,1)
+        _OutlineColor("_OutlineColor", Color) = (0,0,0,1)
         _Outline("Outline_width", Range(0,2)) = .005
     }
 

@@ -9,10 +9,9 @@ public class PlayerRoomManager : MonoBehaviour {
     const float maxStoresPerRoom = .1f;
     const float maxTreasurePerRoom = .1f;
 
-    int maxDepth;
     Movement playerMov;
     List<IRoomChangeListener> roomChangeListeners = new List<IRoomChangeListener>();
-    Room currentRoom;
+    public Room currentRoom;
     
     public void Register(IRoomChangeListener l)
 	{

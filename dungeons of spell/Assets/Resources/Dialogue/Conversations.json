@@ -1,5 +1,28 @@
-{"text":"Hi my name is waifu","id":0,"side":1,"childrenIds": [1]}
-{"text":"Nice to meet you waifu","id":1,"side":0,"childrenIds": [2]}
-{"text":"Do you have a moment? I am hear to share the wishes of our might lord Buddah. With three easy payments of 19.99$ I can send you a video series that will chanege your life.","id":2,"side":1,"childrenIds": [3,4]}
-{"text":"Get the fuck of my lawn you damn hippy","id":3,"side":0,"childrenIds": []} 
-{"text":"Ummm, could you repeat that?","id":4,"side":0,"childrenIds": [2]}
+{"text":"Hi my name is waifu","id":0,"shake": 1,"side":1,"childrenIds": [1]}
+{"text":"Nice to meet you waifu","id":1,"shake": 0,"side":0,"childrenIds": [2]}
+{"text":"Do you have a moment? I am hear to share the wishes of our might lord Buddah. With three easy payments of 19.99$ I can send you a video series that will chanege your life.","id":2,"shake": 0,"side":1,"childrenIds": [3,4]}
+{"text":"Get of my lawn you hippy","id":3,"shake": 0,"side":0,"childrenIds": []}
+{"text": "Ummm, could you repeat that?","id": 4,"shake": 0,"side": 0,"childrenIds": [ 2 ]}             
+{"text":"Welcome to my store c h i l d.","id":5,"shake": 0,"side":1,"childrenIds": []}
+{"text":"Shhhhhhhh, come here.","id":6,"shake": 0,"side":1,"childrenIds": [7]}
+{"text":"...","id":7,"shake": 0,"side":0,"childrenIds": [8]}
+{"text":"A boy once cried, a curious wolf killed his cat.","id":8,"shake": 0,"side":1,"childrenIds": [9]}
+{"text":"...?","id":9,"shake": 0,"side":0,"childrenIds": [10]}
+{"text":"Do you want to hear a secret?","id":10,"shake": 0,"side":1,"childrenIds": [11,12]}
+{"text":"Yes","id":11,"shake": 0,"side":0,"childrenIds": [14]}
+{"text":"No","id":12,"shake": 0,"side":0,"childrenIds": [13]}
+{"text":"Got this in yesterday.","id":14,"shake": 0,"side":1,"childrenIds": []}
+{"text":"A wise choice.","id":13,"shake": 0,"side":1,"childrenIds": []}
+{"text":"What do you think of wares c h i l d?","id":15,"shake": 0,"side":1,"childrenIds": [16,16]}
+{"text":"They're great.","id":16,"shake": 0,"side":0,"childrenIds": [18]}
+{"text":"The prices leave something to be desire","id":17,"shake": 0,"side":0,"childrenIds": [18]}
+{"text":"It appears, a blind customer is always right sometimes.","id":18,"shake": 0,"side":1,"childrenIds": []}
+{"text":"Have you come to play??!?","id":19,"shake": 1,"side":1,"childrenIds": []}
+
+
+
+
+
+
+
+

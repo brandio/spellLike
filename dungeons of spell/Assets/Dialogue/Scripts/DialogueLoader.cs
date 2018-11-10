@@ -11,6 +11,7 @@ public class DialogueLoader : MonoBehaviour {
         public int id;
         public int side;
         public int[] childrenIds;
+        public int shake;
     }
 
     Dictionary<int, Conversation> conversations = new Dictionary<int, Conversation>();

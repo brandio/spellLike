@@ -38,7 +38,7 @@ public class RoomGenerator
         {
             for (int y = 0; y < grid.GetLength(0); y++)
             {
-                if(grid[y,x] == "O" || grid[y, x] == "M" || grid[y, x] == "MS")
+                if(grid[y,x] == "O" || grid[y, x] == "M" || grid[y, x] == "MS" || grid[y, x] == "S" || grid[y, x] == "ST")
                 {
                     string delim = System.IO.Path.DirectorySeparatorChar.ToString();
                     string path = "Walls" + delim + "Side1" + delim + "Path";
@@ -176,6 +176,7 @@ public class RoomGenerator
     C = Chest
     F = Flowers
     MS = Mushroom
+    ST = store ownder
     Portal = Portal
     ==================
     B = BigTree
@@ -193,12 +194,15 @@ public class RoomGenerator
                     break;
                 }
                 return null;
+            case "ST":
+                path = "Enemy" + delim + "book1";
+                break;
             case "R":
                 return null;
             case "I":
                 return null;
             case "X":
-                if (x != 0 && (grid[y,x-1] == "O" || grid[y, x - 1] == "R"))
+                if (x != 0 && (grid[y,x-1] == "O" || grid[y, x - 1] == "R" || grid[y, x - 1] == "MS"))
                 {
                     path = "Walls" + delim + "Side1" + delim + 1 + delim + "pathWall"; //DetermineBushSize(x, y);
                     break;

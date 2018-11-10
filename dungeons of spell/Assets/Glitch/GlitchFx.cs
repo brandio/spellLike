@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class GlitchFx : MonoBehaviour
 {
+    public static GlitchFx instance;
     public float glitchAmount = 0.0f;
     public float shiftMag = 0.0f;
     public Texture2D blockTexture;
@@ -13,13 +14,27 @@ public class GlitchFx : MonoBehaviour
     private Material _glitchMat;
     private float _realGlitch;
 
-    // Use this for initialization
+    float glitchAmountTemp = 0.0f;
+    float shiftMagTemp = 0.0f;
+    public void SetTemp(float shiftAmt, float glitchAmount)
+    {
+        glitchAmountTemp = glitchAmount;
+        shiftMagTemp = shiftAmt;
+    }
+
+    public void Reset()
+    {
+        glitchAmountTemp = glitchAmount;
+        shiftMagTemp = shiftMag;
+    }
     void Start()
     {
+        instance = this;
         _glitchShader = Shader.Find("Hidden/GlitchFX/GlitchFX_Shift");
         _glitchMat = new Material(_glitchShader);
         _glitchMat.SetTexture("_GlitchMap", blockTexture);
 
+        Reset();
         Invoke("UpdateRandom", 0.25f);
     }
 
@@ -39,7 +54,7 @@ public class GlitchFx : MonoBehaviour
     {
         glitchAmount = Mathf.Clamp(glitchAmount, 0.0f, 1.0f);
 
-        _glitchMat.SetFloat("_ShiftMag", shiftMag);
-        _glitchMat.SetFloat("_GlitchAmount", glitchAmount);
+        _glitchMat.SetFloat("_ShiftMag", shiftMagTemp);
+        _glitchMat.SetFloat("_GlitchAmount", glitchAmountTemp);
     }
 }

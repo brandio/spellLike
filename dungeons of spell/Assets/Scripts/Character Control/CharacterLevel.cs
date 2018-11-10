@@ -9,6 +9,8 @@ public class CharacterLevel : MonoBehaviour {
     const float STARTING_COST = 10;
     void GainExperience(float exp)
     {
+        // Don't level up for now
+        return;
         experience += exp;
         
         if (expToLevelUp <= experience)

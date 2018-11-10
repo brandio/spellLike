@@ -300,8 +300,8 @@ public class DungeonRoomMaker : MonoBehaviour {
     {
         RoomBuilder bossRoom = roomBuilders[0];
         List<RoomBuilder> maxDepth = roomBuilders.Where(o => o.depth == depth).ToList().OrderByDescending(o => o.sizeX * o.sizeY).ToList();
-        maxDepth[0].AddRoomFiller(new MiddleBlockRoom(maxDepth[0].position, maxDepth[0].sizeX, maxDepth[0].sizeY, maxDepth[0].room, maxDepth[0].doors));
-        maxDepth[1].AddRoomFiller(new MushroomFieldFiller(maxDepth[1].position, maxDepth[1].sizeX, maxDepth[1].sizeY, maxDepth[1].room, maxDepth[1].doors));
+        maxDepth[0].AddRoomFiller(new BossOneFiller(maxDepth[0].position, maxDepth[0].sizeX, maxDepth[0].sizeY, maxDepth[0].room, maxDepth[0].doors));
+        //maxDepth[1].AddRoomFiller(new BossOneFiller(maxDepth[1].position, maxDepth[1].sizeX, maxDepth[1].sizeY, maxDepth[1].room, maxDepth[1].doors));
 
         RoomBuilder portalRoom = maxDepth[maxDepth.Count - 1];
         RoomBuilder portalRoom2 = maxDepth[maxDepth.Count - 2];
@@ -314,18 +314,39 @@ public class DungeonRoomMaker : MonoBehaviour {
 
         List<RoomBuilder> depthSorted = roomBuilders.OrderByDescending(o => o.depth).ToList();
         List<RoomBuilder> sizeSorted = roomBuilders.OrderBy(o => o.depth).ToList();
+
+        int numStores = Random.Range(1, 4);
+        int stores = 0;
+        foreach (RoomBuilder builder in depthSorted)
+        {
+            if (!builder.hasRoomFiller)
+            {
+                if (Random.Range(0, 100) > 20)
+                {
+                    builder.AddRoomFiller(new StoreRoomFiller(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
+                }
+                stores++;
+                if (stores >= numStores)
+                    break;
+            }
+        }
+
         foreach (RoomBuilder builder in depthSorted)
         {
 
             if(!builder.hasRoomFiller)
             {
-                if (Random.Range(0, 100) > 32)
+                if (Random.Range(0, 100) > 10)
                 {
                     builder.AddRoomFiller(new MiddleBlockRoom(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
                 }
-                else
+                else if(Random.Range(0, 100) > 32)
                 {
                     builder.AddRoomFiller(new LakeRoomFiller(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
+                }
+                else
+                {
+                    builder.AddRoomFiller(new MiddleBlockRoom(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
                 }
             }
             //Debug.Log(builder.depth);

@@ -27,7 +27,10 @@ public class CoinHolder : MonoBehaviour {
 		coins = coins - removeAmount;
 		if (coins < 0) {
 			coins = 0;
-
 		}
-	}
+        if (GainedCoin != null)
+        {
+            GainedCoin(this);
+        }
+    }
 }

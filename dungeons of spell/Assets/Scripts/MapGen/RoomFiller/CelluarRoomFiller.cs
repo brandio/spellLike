@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class CelluarRoomFiller : StartRoomFiller
 {
+    protected bool makeEnemy = true;
     protected int medianXIndex = 0;
     protected int medianYIndex = 0;
     protected int width = 0;
@@ -13,7 +14,7 @@ public class CelluarRoomFiller : StartRoomFiller
 
     }
 
-    int randomFillChance = 65;
+    protected int randomFillChance = 65;
     bool VerifyRoom()
     {
 
@@ -85,8 +86,8 @@ public class CelluarRoomFiller : StartRoomFiller
         RoomGenerator generator = new RoomGenerator(transform.position, grid, room, true);
 
         MakeDoors(false);
-
-        FillEnemy();
+        if(makeEnemy)
+            FillEnemy();
         return room;
     }
 
@@ -230,20 +231,6 @@ public class CelluarRoomFiller : StartRoomFiller
     int DistanceFromCenter(int pos, bool xAxis)
     {
         return (xAxis) ? grid.GetLength(0)/2 - pos : grid.GetLength(1)/2 - pos;
-    }
-
-    void CreatePathFindingNodes()
-    {
-        for (int x = 0; x < grid.GetLength(0); x++)
-        {
-            for (int y = 0; y < grid.GetLength(1); y++)
-            {
-                if(grid[x,y] == "O" && x%3 == 0 && y% 3 == 0)
-                {
-                    room.pathFindingNodes.Add(new PathFindingNode(new Vector2(transform.position.x + x * tileSize, transform.position.y + y * tileSize)));
-                }
-            }
-        }
     }
 
     override protected bool IsInRange(IntPair pair)

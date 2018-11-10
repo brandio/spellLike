@@ -51,8 +51,8 @@ public class StartRoomFiller : IRoomFiller
         room = r;
 		transform = room.transform;
 		transform.position = pos;
-       
-		sizeX = x;
+        room.center = new Vector3(room.transform.position.x + tileSize * (sizeX / 2), room.transform.position.y + tileSize * (sizeY / 2), 0);
+        sizeX = x;
 		sizeY = y;
 		grid = new string[sizeX,sizeY];
         for(int i = 0; i < grid.GetLength(0); i++)
@@ -135,6 +135,13 @@ public class StartRoomFiller : IRoomFiller
     protected void FillEnemy()
     {
         IEnemyFiller enemyFiller = new EnemyFillerFactory().MakeEnemyFiller();
+        room.enemies = enemyFiller.MakeEnemies(sizeX * sizeY, room);
+        MakePathFindingConnections();
+    }
+
+    protected void FillEnemy(EnemyFillerFactory.EnemyType type)
+    {
+        IEnemyFiller enemyFiller = new EnemyFillerFactory().MakeEnemyFiller(type);
         room.enemies = enemyFiller.MakeEnemies(sizeX * sizeY, room);
         MakePathFindingConnections();
     }
@@ -339,6 +346,19 @@ public class StartRoomFiller : IRoomFiller
 		// Mark corner on grid
 		grid [pos.xPos, pos.yPos] = 2;*/
 	}
-    
 
+
+    protected void CreatePathFindingNodes()
+    {
+        for (int x = 0; x < grid.GetLength(0); x++)
+        {
+            for (int y = 0; y < grid.GetLength(1); y++)
+            {
+                if (grid[x, y] == "O" && x % 3 == 0 && y % 3 == 0)
+                {
+                    room.pathFindingNodes.Add(new PathFindingNode(new Vector2(transform.position.x + x * tileSize, transform.position.y + y * tileSize)));
+                }
+            }
+        }
+    }
 }

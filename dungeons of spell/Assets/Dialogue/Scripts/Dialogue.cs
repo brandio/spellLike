@@ -34,7 +34,8 @@ public class Dialogue : MonoBehaviour {
 
     public void InitConversation(int[] conversationId, conversationEndedHandler ended, DialogueParticipant lhsParticipant, DialogueParticipant rhsParticipant)
     {
-        characterControls.enabled = false;
+
+        characterControls.active = false;
         if (ended != null)
         {
             conversationEnded += ended;
@@ -59,9 +60,14 @@ public class Dialogue : MonoBehaviour {
     {
         if(characterControls  != null)
         {
-            characterControls.enabled = false;
+            characterControls.active = false;
         }
         currentConversations = dialogueLoader.GetConversations(conversationId);
+
+        if (currentConversations[0].shake == 1)
+        {
+            ScreenShake.instance.shake(1);
+        }
         List<string> strings = new List<string>();
         foreach (DialogueLoader.Conversation coversation in currentConversations)
         {
@@ -72,9 +78,13 @@ public class Dialogue : MonoBehaviour {
 
     public void UpdateConversation(int option)
     {
+        //if(currentConversations[option].shake == 1)
+        //{
+        //    ScreenShake.instance.shake(1);
+        //}
         if(currentConversations[option].childrenIds.Length == 0)
         {
-            EndConversation(option);
+            EndConversation(currentConversations[0].id);
         }
         else
         {
@@ -88,16 +98,16 @@ public class Dialogue : MonoBehaviour {
         {
             foreach (conversationEndedHandler d in conversationEnded.GetInvocationList())
             {
+                d(endId);
                 conversationEnded -= d;
             }
-            conversationEnded(endId);
         }
         dialogueUi.lhsPanel.SetActive(false);
         dialogueUi.rhsPanel.SetActive(false);
 
         if (characterControls != null)
         {
-            characterControls.enabled = true;
+            characterControls.active = true;
         }
     }
 

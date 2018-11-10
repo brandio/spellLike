@@ -32,7 +32,7 @@ public class DialogueUI : MonoBehaviour {
     void Update()
     {
 
-        if (Input.GetKeyUp(KeyCode.Return))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             switch(currentState)
             {
@@ -53,12 +53,12 @@ public class DialogueUI : MonoBehaviour {
         }
         if (currentState == DialogueUiState.lhsChoice && (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow)))
         {
-            if(Input.GetKeyUp(KeyCode.DownArrow) && selectedOption <= (options.Count - 1))
+            if((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) && selectedOption <= (options.Count - 1))
             {
                 optionSound.Play();
                 SetOption(selectedOption + 1);
             }
-            else if (Input.GetKeyUp(KeyCode.UpArrow) && selectedOption > 0)
+            else if ((Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W)) && selectedOption > 0)
             {
                 optionSound.Play();
                 SetOption(selectedOption - 1);

@@ -16,6 +16,18 @@ public class Room : MonoBehaviour
     public List<GameObject> enemies;
 
     bool active = false;
+    [HideInInspector]
+    public bool bossRoom = false;
+    public Vector3 center;
+
+    public bool IsCleared()
+    {
+        if(enemies.Count == 0)
+        {
+            return true;
+        }
+        return false;
+    }
 
     public void Activate()
     {
@@ -79,6 +91,7 @@ public class Room : MonoBehaviour
         {
             enemies = new List<GameObject>();
         }
+
         foreach (GameObject enemy in enemies)
         {
             enemy.SetActive(true);
@@ -86,6 +99,11 @@ public class Room : MonoBehaviour
             GameObject player = GameObject.Find("Player");
             bool posBad = true;
             int i = 0;
+            if(bossRoom)
+            {
+                enemy.transform.position = center;
+                posBad = false;
+            }
             while (posBad)
             {
                 i++;

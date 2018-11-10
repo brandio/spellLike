@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Shop : InRangeActive {
 	public Text priceText;
 	public Text itemText;
-	public bool canHaveComponents = true;
+	public bool canHaveComponents = false;
 	public bool canHaveHealth = true;
 	public bool canHaveCharges = true;
 
@@ -20,7 +20,8 @@ public class Shop : InRangeActive {
 	float price;
 	
 	bool roomSet = false;
-	
+    public AudioSource notEnoughGold;
+    public AudioSource purchase;
 	void Update()
 	{
 
@@ -35,9 +36,14 @@ public class Shop : InRangeActive {
 			if(holder.GetCoinCount() >= price)
 			{
 				holder.RemoveCoin((int)price);
-				giveItem();
+                purchase.Play();
+                giveItem();
 				gameObject.SetActive(false);
 			}
+            else
+            {
+                notEnoughGold.Play();
+            }
 
 		}
 	}
@@ -46,7 +52,17 @@ public class Shop : InRangeActive {
 
 	}
 
-	void PickItem(Room r)
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            CoinHolder holder = player.gameObject.GetComponent<CoinHolder>();
+            outLineColor = holder.GetCoinCount() >= price ? new Color(0, 1, 0) : new Color(1, 0, 0);
+            SetOutline(other);
+        }
+    }
+
+    void PickItem(Room r)
 	{
 		if( canHaveComponents || canHaveHealth || canHaveCharges)
 		{
@@ -55,33 +71,46 @@ public class Shop : InRangeActive {
 			{
 				int itemType = Random.Range (0,3);
 				switch(itemType)
-				{
-				case 0:
-					price = componentPrice;
-					giveItem = GiveSpellComponent;
-					spellComponent = PlayerInventory.instance.AddComponentToStore();
-					ISpellComponent component = ComponentLoader.GetInstance().LoadComponent(new ComponentLoader.UnLoadedSpellComponent(spellComponent,PlayerInventory.instance.componentsInStore[spellComponent]));
-					itemText.text = component.GetTitle() + "\n" + component.GetToolTip();
-					haveItem = true;
-					break;
-				case 1:
-					price = fullHealPrice;
-					giveItem = Heal;
-					itemText.text = "Full Healh";
-					haveItem = true;
-					break;
-				case 2:
-					break;
-				default:
+                {
+                    case 0:
+                        if (!canHaveComponents)
+                        {
+                            continue;
+                        }
+                        price = componentPrice;
+                        giveItem = GiveSpellComponent;
+                        spellComponent = PlayerInventory.instance.AddComponentToStore();
+                        ISpellComponent component = ComponentLoader.GetInstance().LoadComponent(new ComponentLoader.UnLoadedSpellComponent(spellComponent, PlayerInventory.instance.componentsInStore[spellComponent]));
+                        itemText.text = component.GetTitle() + "\n" + component.GetToolTip();
+                        haveItem = true;
+                        break;
+                    case 1:
+                        if (!canHaveHealth)
+                        {
+                            continue;
+                        }
+                        price = fullHealPrice;
+                        giveItem = Heal;
+                        itemText.text = "Full Healh";
+                        haveItem = true;
+                        break;
+                    case 2:
+                        if (!canHaveCharges)
+                        {
+                            continue;
+                        }
+                        price = fullChargePrice;
+                        giveItem = RechargeSpells;
+                        itemText.text = "Recharge Spells";
+                        haveItem = true;
+                        break;
+                    default:
 					break;
 
 				}
 			}
 			priceText.text = price.ToString();
-
-
 		}
-
 	}
 
 	string spellComponent;
@@ -89,6 +118,13 @@ public class Shop : InRangeActive {
 	{
 		PlayerInventory.instance.AddComponent (spellComponent, true);
 	}
+
+    void RechargeSpells()
+    {
+        Shoot playerShoot = player.gameObject.transform.GetChild(1).GetChild(0).GetComponent<Shoot>();
+        playerShoot.RechargeSpells();
+        return;
+    }
 
 	void Heal()
 	{

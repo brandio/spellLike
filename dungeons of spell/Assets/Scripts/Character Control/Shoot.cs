@@ -171,4 +171,12 @@ public class Shoot : MonoBehaviour {
 		spell.Cast (transform, true);
 	}
 
+    public void RechargeSpells()
+    {
+        foreach (SpellBook book in spells)
+        {
+            book.IncreaseCharges(500);
+        }
+    }
+
 }

@@ -5,7 +5,8 @@ public class StatePatternEnemy : MonoBehaviour {
 
 	public EnemyShoot shoot;
 
-	[HideInInspector] IEnemyState currentState;
+    public MonoBehaviour startState;
+    [HideInInspector] IEnemyState currentState;
 	[HideInInspector] public AiMovement movement;
     [HideInInspector] public Movement player;
     [HideInInspector] public float lastAttackTime = 0;
@@ -52,11 +53,19 @@ public class StatePatternEnemy : MonoBehaviour {
 	void Start () {
         string[] layers = new string[1] { "BackGround" };
         layersThatBlockAttack = LayerMask.GetMask(layers);
-        currentState = new ObserveState(this);
-	}
+        if (startState == null)
+        {
+            currentState = new ObserveState(this);
+        }
+        else
+        {
+            IEnemyState startingState = startState as IEnemyState;
+            currentState = startingState;
+        }
+    }
 
-	// Update is called once per frame
-	void Update () 
+    // Update is called once per frame
+    void Update () 
 	{
 		currentState.UpdateState ();
 	}
