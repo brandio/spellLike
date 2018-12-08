@@ -1,1 +1,1 @@
-{"title":"Moon Lace","toolTip":"The power of the moon, seeks to kill","subType":1,"cost":2,"isActive":false,"moveSpeed":1.0,"damageMod":3.0,"priority":1.0,"color":{"r":0.82,"g":0.85,"b":1,"a":1},"onHitEffectName":"InstantKillEffect"}
+{"title":"Moon Lace","toolTip":"Does 3x damage but only hurts its target if it will kill it.","subType":1,"cost":2,"isActive":false,"moveSpeed":1.0,"damageMod":3.0,"priority":1.0,"color":{"r":0.82,"g":0.85,"b":1,"a":1},"onHitEffectName":"InstantKillEffect"}

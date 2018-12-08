@@ -25,7 +25,29 @@ public class PlayerInventory : MonoBehaviour {
         }
 
 		Init ();
-        FillAll();
+        ComponentLoader loader = ComponentLoader.GetInstance();
+
+        foreach (ComponentLoader.UnLoadedSpellComponent comp in loader.StartingSpellComponents)
+        {
+            string value = comp.name;
+            switch (comp.type)
+            {
+                case SpellComponent.SubSpellComponentType.Paper:
+                    pages.Add(value);
+                    break;
+                case SpellComponent.SubSpellComponentType.Rune:
+                    runes.Add(value);
+                    break;
+                case SpellComponent.SubSpellComponentType.language:
+                    langs.Add(value);
+                    break;
+                case SpellComponent.SubSpellComponentType.Ink:
+                    inks.Add(value);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
 	public void AddComponent(string componentName, bool shop)
@@ -84,29 +106,29 @@ public class PlayerInventory : MonoBehaviour {
         ownedComponents[SpellComponent.SubSpellComponentType.Ink] = inks;
 
         ComponentLoader loader = ComponentLoader.GetInstance();
-        foreach (ComponentLoader.UnLoadedSpellComponent comp in loader.StartingSpellComponents)
-        {
-            string value = comp.name;
-            switch (comp.type)
-            {
-                case SpellComponent.SubSpellComponentType.Paper:
-                    pages.Add(value);
-                    break;
-                case SpellComponent.SubSpellComponentType.Rune:
-                    runes.Add(value);
-                    break;
-                case SpellComponent.SubSpellComponentType.language:
-                    langs.Add(value);
-                    break;
-                case SpellComponent.SubSpellComponentType.Ink:
-                    inks.Add(value);
-                    break;
-                default:
-                    break;
-            }
-        }
+        //foreach (ComponentLoader.UnLoadedSpellComponent comp in loader.StartingSpellComponents)
+        //{
+        //    string value = comp.name;
+        //    switch (comp.type)
+        //    {
+        //        case SpellComponent.SubSpellComponentType.Paper:
+        //            pages.Add(value);
+        //            break;
+        //        case SpellComponent.SubSpellComponentType.Rune:
+        //            runes.Add(value);
+        //            break;
+        //        case SpellComponent.SubSpellComponentType.language:
+        //            langs.Add(value);
+        //            break;
+        //        case SpellComponent.SubSpellComponentType.Ink:
+        //            inks.Add(value);
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
 
-		foreach (ComponentLoader.UnLoadedSpellComponent comp in loader.UnlockableSpellComponents)
+        foreach (ComponentLoader.UnLoadedSpellComponent comp in loader.UnlockableSpellComponents)
 		{
 			if(!componentsAvailable.ContainsKey(comp.name))
 			{
@@ -140,26 +162,6 @@ public class PlayerInventory : MonoBehaviour {
                     break;
             }
         }
-		foreach (ComponentLoader.UnLoadedSpellComponent comp in loader.StartingSpellComponents)
-		{
-			string value = comp.name;
-			switch (comp.type)
-			{
-			case SpellComponent.SubSpellComponentType.Paper:
-				pages.Add(value);
-				break;
-			case SpellComponent.SubSpellComponentType.Rune:
-				runes.Add(value);
-				break;
-			case SpellComponent.SubSpellComponentType.language:
-				langs.Add(value);
-				break;
-			case SpellComponent.SubSpellComponentType.Ink:
-				inks.Add(value);
-				break;
-			default:
-				break;
-			}
-		}
+
     }
 }

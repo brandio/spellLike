@@ -87,7 +87,7 @@ public class Shoot : MonoBehaviour {
             builder.grid = spellGrid;
             builder.lang = ComponentLoader.GetInstance().LoadComponent(new ComponentLoader.UnLoadedSpellComponent("English", SpellComponent.SubSpellComponentType.language)) as Language;
             builder.SetRune(ComponentLoader.GetInstance().LoadComponent(new ComponentLoader.UnLoadedSpellComponent("Bomb", SpellComponent.SubSpellComponentType.Rune)) as SpellRune);
-            builder.page = ComponentLoader.GetInstance().LoadComponent(new ComponentLoader.UnLoadedSpellComponent("Bamboo", SpellComponent.SubSpellComponentType.Paper)) as SpellPage;
+            builder.page = ComponentLoader.GetInstance().LoadComponent(new ComponentLoader.UnLoadedSpellComponent("Paper", SpellComponent.SubSpellComponentType.Paper)) as SpellPage;
             spells[1] = builder.MakeSpellBook();
         }
         if( basicSpell == null)

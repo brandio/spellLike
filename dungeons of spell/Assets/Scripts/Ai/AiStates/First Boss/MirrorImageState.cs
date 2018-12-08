@@ -27,12 +27,25 @@ public class MirrorImageState : IEnemyState
     {
         statePatternEnemy.SetLastHealth();
         GlitchFx.instance.SetTemp(10, 10);
-        for(int i = 0; i < statePatternEnemy.numberMirrorImages; i++)
+        int numberToMake = statePatternEnemy.numberMirrorImages - statePatternEnemy.mirrorImageList.Count;
+        for (int i = 0; i < numberToMake; i++)
         {
             GameObject mirrorImage = GameObject.Instantiate(statePatternEnemy.mirrorImages);
             Vector2 circle = Random.insideUnitCircle * 10;
             mirrorImage.transform.position = new Vector3(statePatternEnemy.transform.position.x + circle.x, statePatternEnemy.transform.position.y + circle.y);
-            mirrorImage.GetComponent<AiMovement>().room = room;
+
+            MovementCheck2 movementCheck = mirrorImage.GetComponent<MovementCheck2>();
+            if (!movementCheck.IsPositionClear(movementCheck.transform.position))
+            {
+                Object.Destroy(movementCheck.gameObject);
+            }
+            else
+            {
+                statePatternEnemy.mirrorImageList.Add(mirrorImage);
+                mirrorImage.GetComponent<Health>().EnemyDied += statePatternEnemy.RemoveEnemy;
+                mirrorImage.GetComponent<AiMovement>().room = room;
+            }
+
         }
         Vector2 circle2 = Random.insideUnitCircle * 10;
         statePatternEnemy.transform.position = new Vector3(statePatternEnemy.transform.position.x + circle2.x, statePatternEnemy.transform.position.y + circle2.y);

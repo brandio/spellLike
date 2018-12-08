@@ -6,7 +6,7 @@ public class Ambient : MonoBehaviour {
     //public List<AudioClip> clipsInUse;
     public int clipsInUse;
     public List<AudioClip> clipsNotInUse;
-
+    public static Ambient instance;
     public List<AudioSource> sourcesInUse;
     public List<AudioSource> sourcesNotInUse;
 
@@ -48,6 +48,19 @@ public class Ambient : MonoBehaviour {
         clipsInUse++;
     }
 
+    IEnumerator FadeOut(AudioSource source, int index)
+    {
+        source.Play();
+        while (source.volume > .05)
+        {
+            yield return new WaitForSeconds(.1f);
+            source.volume -= .005f;
+        }
+        sourcesNotInUse.Add(source);
+        source.Stop();
+        sourcesInUse.RemoveAt(index);
+    }
+
     public void StopTrack()
     {
         Debug.Log("Stop track");
@@ -61,12 +74,18 @@ public class Ambient : MonoBehaviour {
             clipsInUse--;
             int index = Random.Range(0, sourcesInUse.Count);
             clipsNotInUse.Add(sourcesInUse[index].clip);
-            sourcesNotInUse.Add(sourcesInUse[index]);
-            sourcesInUse[index].Stop();
-            sourcesInUse.RemoveAt(index);
+            StartCoroutine(FadeOut(sourcesInUse[index],index));
         }
     }
 
+    public void stop()
+    {
+        foreach(AudioSource audioSource in sourcesInUse)
+        {
+            audioSource.Stop();
+        }
+        this.enabled = false;
+    }
     float GetNextTime()
     {
         float sign = Random.Range(0, 100) > 50 ? 1 : -1;
@@ -75,6 +94,7 @@ public class Ambient : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        instance = this;
 	    for(int i = 0; i < averageTracks; i++)
         {
             StartTrack();

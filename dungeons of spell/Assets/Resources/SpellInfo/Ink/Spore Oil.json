@@ -1,1 +1,1 @@
-{"title":"Spore Oil","toolTip":"Set them a flame","subType":1,"cost":2.0,"isActive":false,"moveSpeed":1.0,"damageMod":2.0,"priority":1.0,"color":{"r":0.1,"g":0.7,"b":0.2,"a":1.0},"onHitEffectName":"FireOnHitEffect"}
+{"title":"Spore Oil","toolTip":"Poisons its target, damaging them over time.","subType":1,"cost":2.0,"isActive":false,"moveSpeed":1.0,"damageMod":2.0,"priority":1.0,"color":{"r":0.1,"g":0.7,"b":0.2,"a":1.0},"onHitEffectName":"FireOnHitEffect"}

@@ -59,17 +59,28 @@ public class ComponentLoader {
         instance.path = Path.Combine("Assets", "Resources");
         instance.path = Path.Combine(instance.path, "SpellInfo");
 
-        instance.StartingSpellComponents = new UnLoadedSpellComponent[] { new UnLoadedSpellComponent("Paper", SpellComponent.SubSpellComponentType.Paper),
-            new UnLoadedSpellComponent("Bamboo", SpellComponent.SubSpellComponentType.Paper),
-             new UnLoadedSpellComponent("Raging Badger", SpellComponent.SubSpellComponentType.Rune),
+        instance.StartingSpellComponents = new UnLoadedSpellComponent[] { 
+        new UnLoadedSpellComponent("Paper", SpellComponent.SubSpellComponentType.Paper),
+             new UnLoadedSpellComponent("Basic", SpellComponent.SubSpellComponentType.Rune),
+             new UnLoadedSpellComponent("LeftHook", SpellComponent.SubSpellComponentType.Rune),
+             new UnLoadedSpellComponent("RightHook", SpellComponent.SubSpellComponentType.Rune),
+             new UnLoadedSpellComponent("Boomerang", SpellComponent.SubSpellComponentType.Rune),
+             new UnLoadedSpellComponent("Slipping Snake", SpellComponent.SubSpellComponentType.Rune),
+             new UnLoadedSpellComponent("AlphaStar", SpellComponent.SubSpellComponentType.Rune),          
+             new UnLoadedSpellComponent("TwinBat", SpellComponent.SubSpellComponentType.Rune),
              new UnLoadedSpellComponent("Bomb", SpellComponent.SubSpellComponentType.Rune),
-             new UnLoadedSpellComponent("BullFrog", SpellComponent.SubSpellComponentType.Rune),
-			new UnLoadedSpellComponent("TwoClaw", SpellComponent.SubSpellComponentType.Rune),
-			new UnLoadedSpellComponent("English", SpellComponent.SubSpellComponentType.language),
+
+             new UnLoadedSpellComponent("English", SpellComponent.SubSpellComponentType.language),
              new UnLoadedSpellComponent("SootExtract", SpellComponent.SubSpellComponentType.Ink),
              new UnLoadedSpellComponent("Gold", SpellComponent.SubSpellComponentType.Ink),
              new UnLoadedSpellComponent("Insect", SpellComponent.SubSpellComponentType.Ink),
-			 new UnLoadedSpellComponent("VampireBlood", SpellComponent.SubSpellComponentType.Ink),
+             new UnLoadedSpellComponent("VampireBlood", SpellComponent.SubSpellComponentType.Ink),
+             new UnLoadedSpellComponent("Ghastlish", SpellComponent.SubSpellComponentType.language),
+             new UnLoadedSpellComponent("GlurpleTongue", SpellComponent.SubSpellComponentType.language),
+             new UnLoadedSpellComponent("Gnomish", SpellComponent.SubSpellComponentType.language),
+             new UnLoadedSpellComponent("Hentch", SpellComponent.SubSpellComponentType.language),
+             new UnLoadedSpellComponent("Vampiric", SpellComponent.SubSpellComponentType.language),
+             new UnLoadedSpellComponent("Shadowskript", SpellComponent.SubSpellComponentType.language),
              new UnLoadedSpellComponent("Earth", SpellComponent.SubSpellComponentType.Ink)};
 
         instance.UnlockableSpellComponents = new UnLoadedSpellComponent[] { new UnLoadedSpellComponent("Silk", SpellComponent.SubSpellComponentType.Paper),
@@ -98,16 +109,16 @@ public class ComponentLoader {
              new UnLoadedSpellComponent("Spore Oil", SpellComponent.SubSpellComponentType.Ink),
              new UnLoadedSpellComponent("Moon Lace", SpellComponent.SubSpellComponentType.Ink)};
 
-        SpellRune rune = new SpellRune();
-        rune.toolTip = "Cast from mouse position shooting violent violents in all directions!";
-        rune.title = "Bomb";
-        rune.pattern = "BlowFishPattern";
-        rune.damageMod = 1;
-        rune.cost = 3;
-        rune.thrown = true;
-        rune.subType = SpellComponent.SubSpellComponentType.Rune;
-        string jsonString = JsonUtility.ToJson(rune);
-        File.WriteAllText("Assets/Resources/Bomb.json", jsonString);
+        //SpellRune rune = new SpellRune();
+        //rune.toolTip = "Cast from mouse position shooting violent violents in all directions!";
+        //rune.title = "Bomb";
+        //rune.pattern = "BlowFishPattern";
+        //rune.damageMod = 1;
+        //rune.cost = 3;
+        //rune.thrown = true;
+        //rune.subType = SpellComponent.SubSpellComponentType.Rune;
+        //string jsonString = JsonUtility.ToJson(rune);
+        //File.WriteAllText("Assets/Resources/Bomb.json", jsonString);
 
         return instance;
 

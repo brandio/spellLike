@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour, PathingObject{
 	public Animator anim;
 	public float speedMod = 1;
     public LayerMask mask;
+    [HideInInspector]
+    public Vector2 direction = Vector2.zero;
 	// Use this for initialization
 	void Start () {
 		mc = this.GetComponent<MovementCheck> ();
@@ -80,10 +82,11 @@ public class Movement : MonoBehaviour, PathingObject{
 		if (Input.GetKey (KeyCode.S)) {
 			moveVector = moveVector + new Vector3(0,-1,0);
 		}
+        
 		Vector3 pos = this.transform.position + (moveVector * speed * speedMod * Time.deltaTime);
 		if(mc.CheckMove(pos))
 		{
-			if(moveVector == Vector3.zero)
+            if (moveVector == Vector3.zero)
 			{
 				reflection.SetBool("Walking",false);
 			}
@@ -91,8 +94,8 @@ public class Movement : MonoBehaviour, PathingObject{
 			{
 				reflection.SetBool("Walking",true);
 			}
-
-			this.transform.position = pos;
+            direction = moveVector;
+            this.transform.position = pos;
 		}
 
 	}

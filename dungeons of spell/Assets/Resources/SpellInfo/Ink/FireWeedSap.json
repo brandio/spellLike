@@ -1,1 +1,1 @@
-{"title":"Fire Weed Sap","toolTip":"Set them a flame","subType":1,"cost":2.0,"isActive":false,"moveSpeed":1.0,"damageMod":1.0,"priority":1.0,"color":{"r":0.9,"g":0.4,"b":0.1,"a":1.0},"onHitEffectName":"FireOnHitEffect"}
+{"title":"Fire Weed Sap","toolTip":"Burns its target over time.","subType":1,"cost":2.0,"isActive":false,"moveSpeed":1.0,"damageMod":1.0,"priority":1.0,"color":{"r":0.9,"g":0.4,"b":0.1,"a":1.0},"onHitEffectName":"FireOnHitEffect"}

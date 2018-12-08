@@ -28,9 +28,20 @@ public class DialogueLoader : MonoBehaviour {
         System.IO.StreamReader file = new System.IO.StreamReader(fullPath);
         while ((line = file.ReadLine()) != null)
         {
-
-            Conversation conversation = JsonUtility.FromJson<Conversation>(line);
-            conversations.Add(conversation.id, conversation);
+            if(line == null)
+            {
+                file.Close();
+                return;
+            }
+            try
+            {
+                Conversation conversation = JsonUtility.FromJson<Conversation>(line);
+                conversations.Add(conversation.id, conversation);
+            }
+            catch
+            {
+                Debug.Log(line.ToString());
+            }
             //conversations[] = conversation;
         }
 

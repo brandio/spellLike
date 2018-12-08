@@ -1,1 +1,1 @@
-{ "title": "Shadowskript","toolTip":"A langauge spoken by our shadows, this langauge allows your spells to go throug walls","subType":4,"cost":5.0,"isActive":false,"projectoryString":"BasicProjectory","layers":["Player"]}
+{ "title": "Shadowskript","toolTip":"This langauge allows your spells to go throug walls","subType":4,"cost":5.0,"isActive":false,"projectoryString":"BasicProjectory","layers":["Player"]}

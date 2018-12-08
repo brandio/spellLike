@@ -19,7 +19,7 @@ public class BookUiMaster : MonoBehaviour {
     public float yStart = 0;
     public Text titleText;
     public InputField nameInput;
-
+    public Scrollbar scrollbar;
     void SpawnTabs()
     {
         for (int i = 0; i < layOuts.Count; i++)
@@ -111,6 +111,7 @@ public class BookUiMaster : MonoBehaviour {
         {
             ComponentSelected(type, component);
         }
+        scrollbar.value = 1;
     }
 
     public void InitBook(ProjectileSpellBookBuilder builder, ProjectileSpellBookBuilder newBuilder, SpellGrid spellGrid)
@@ -160,6 +161,7 @@ public class BookUiMaster : MonoBehaviour {
         CompIndexSelected(0);
         ChangeLayOut(layOuts.Count - 1);
         stats.UpdateStats();
+        scrollbar.value = 1;
     }
 
     void InitType(SpellComponent.SubSpellComponentType type, ProjectileSpellBookBuilder builder)

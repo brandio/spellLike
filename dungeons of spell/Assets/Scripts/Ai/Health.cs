@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour {
     public float health = 40;
@@ -9,7 +10,7 @@ public class Health : MonoBehaviour {
     AudioSource audioSource;
 
     public float experienceOnDeath = 10;
-
+    public bool player = false;
 	public SpriteRenderer CharacterSprite;
     public bool ChromAbEffectOnDamage = false;
 
@@ -26,6 +27,11 @@ public class Health : MonoBehaviour {
 
     IEnumerator Death()
     {
+        if(player)
+        {
+            Debug.Log("load");
+            SceneManager.LoadScene(0);
+        }
 		if (anim != null) {
 			anim.SetBool("Death", true);
 		}
@@ -53,7 +59,7 @@ public class Health : MonoBehaviour {
             CharacterSprite.material.SetFloat("_OffsetRedX", -sign * (i / amount));
             CharacterSprite.material.SetFloat("_OffsetRedY", -sign * (i / amount));
             CharacterSprite.material.SetFloat("_OffsetGreenX", sign * (i / amount));
-            yield return new WaitForSeconds(.15f);
+            yield return new WaitForSeconds(.13f);
         }
         gameObject.SetActive(false);
     }
@@ -104,7 +110,7 @@ public class Health : MonoBehaviour {
             if (EnemyDied != null)
                 EnemyDied(this);
             ScreenShake.instance.shake(.2f);
-            if(ChromAbEffectOnDamage)
+            if(true || ChromAbEffectOnDamage)
             {
                 StartCoroutine("Death");
             }

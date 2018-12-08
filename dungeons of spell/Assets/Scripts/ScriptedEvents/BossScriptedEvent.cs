@@ -7,6 +7,8 @@ public class BossScriptedEvent : IScriptedEvent
     public StatePatternRedMan statePatternEnemy;
     public override void StartEvent()
     {
+        Ambient.instance.StopAllCoroutines();
+        this.GetComponent<AudioSource>().Play();
         Controls.GetInstance().active = false;
         ScreenShake.instance.shake(0.5f);
         GlitchFx.instance.SetTemp(5, .8f);
