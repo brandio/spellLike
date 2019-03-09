@@ -1,1 +1,1 @@
-{"title":"Paper","toolTip":"Made with mulberry bark and hemp rags there is nothing special about this paper. Quick and diry, this is as basic as it gets.","subType":2,"cost":1.0,"isActive":false,"damage":1.0,"cooldown":0.3,"chaos":9.0}
+{"title":"Paper","toolTip":"Made with mulberry bark and hemp rags there is nothing special about this paper. Quick and diry, this is as basic as it gets.","subType":2,"cost":1.0,"isActive":false,"damage":1.0,"cooldown":0.3,"chaos":15.0, "reloadTime": 1.0, "charges": 6.0, "moveSpeedMod":1}

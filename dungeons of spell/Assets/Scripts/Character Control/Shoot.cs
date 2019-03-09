@@ -7,13 +7,19 @@ public class Shoot : MonoBehaviour {
 
     Movement movement; 
     SpriteRenderer render;
-	AudioSource audioSource;
-	bool onCoolDown = false;
+	public AudioSource shootSource;
+    public AudioSource reloadSource;
+    public AudioSource lastShot;
+    public GramDrawer reloadGram;
+    bool onCoolDown = false;
 
     SpellBook basicSpell;
     public delegate void SpellChangeHandler(SpellBook currentSpell);
     public event SpellChangeHandler SpellChanged;
 
+    public delegate void ReloadEventHandler();
+    public event ReloadEventHandler Reloaded;
+    bool reloading = false;
     public void SetNonBasicSpell(SpellBook book, int index)
     {
         spells[index] = book;
@@ -27,7 +33,7 @@ public class Shoot : MonoBehaviour {
 
     void OnSpellChange(bool up)
     {
-        if(up)
+        if (up)
         {
             if (currentSpell == 1)
             {
@@ -44,7 +50,7 @@ public class Shoot : MonoBehaviour {
             }
         }
         SpellChanged(spells[currentSpell]);
-        
+        reloadGram.numPoints = (int)spells[currentSpell].loadSize;
     }
 
     void OnPlayerLevelUp(CharacterLevel level)
@@ -107,9 +113,10 @@ public class Shoot : MonoBehaviour {
 	{
         currentSpell = 0;
         render = GetComponent<SpriteRenderer> ();
-		audioSource = this.GetComponent<AudioSource> ();
+		//shootSource = this.GetComponent<AudioSource> ();
 		movement = this.transform.parent.parent.gameObject.GetComponent<Movement> ();
-	}
+        reloadGram.numPoints = (int)spells[currentSpell].loadSize;
+    }
 
 	IEnumerator SetCoolDown(bool isBasicSpell = false)
 	{
@@ -135,28 +142,67 @@ public class Shoot : MonoBehaviour {
 		}
 	}
 
-	void Update () {
+	void Update () 
+    {
+        if (!reloading)
+        {
+            if (Input.GetMouseButton(1) && !onCoolDown && Controls.GetInstance().active)
+            {
+                FireBasic();
+            }
+            else if (Input.GetMouseButton(0) && !onCoolDown && Controls.GetInstance().active)
+            {
+                if (spells[currentSpell].NeedReload())
+                {
+                    Reload();
+                    return;
+                }
+                Fire();
+            }
+            else if(Input.GetKeyDown(KeyCode.R))
+            {
+                Reload();
 
-		if (Input.GetMouseButton(1) && !onCoolDown && Controls.GetInstance().active)
-        {
-            FireBasic();
+            }
+            if (Input.GetAxis("Mouse ScrollWheel") != 0)
+            {
+                OnSpellChange(Input.GetAxis("Mouse ScrollWheel") > 0);
+            }
         }
-		if (Input.GetMouseButton(0) && !onCoolDown && Controls.GetInstance().active)
+        else
         {
-            Fire();
-        }
-        if (Input.GetAxis("Mouse ScrollWheel") != 0)
-        {
-            OnSpellChange(Input.GetAxis("Mouse ScrollWheel") > 0);
+            if(Time.time > timeTillReload)
+            {
+                DoneReloading();
+            }
         }
     }
-	
-	void Fire()
+
+    void Fire()
 	{
         shoot(spells[currentSpell]);
         StartCoroutine(SetCoolDown());
     }
 
+    float timeTillReload = 0;
+    void Reload()
+    {
+        reloadGram.gameObject.SetActive(true);
+        reloadGram.DrawOverTime(Time.time + spells[currentSpell].reloadTime);
+        spells[currentSpell].Reload();
+        timeTillReload = Time.time + spells[currentSpell].reloadTime;
+        reloading = true;
+    }
+
+    void DoneReloading()
+    {
+        reloadSource.Stop();
+        reloading = false;
+        if(Reloaded != null)
+            Reloaded();
+        reloadSource.Play();
+        //reloadGram.gameObject.SetActive(false);
+    }
     void FireBasic()
     {
         shoot(basicSpell);
@@ -167,9 +213,23 @@ public class Shoot : MonoBehaviour {
 	{
         //ScreenShake.instance.shake (.01f * spells[currentSpell].cost);
         ScreenShake.instance.shake(.2f);
-        audioSource.Play ();
-		spell.Cast (transform, true);
+        if(spell.chargesCurrent == spell.nextChargesTillReload + 1)
+        {
+            lastShot.Play();
+        }
+        else
+        {
+            shootSource.pitch = Random.Range(.992f, 1.08f);
+            shootSource.Play();
+
+        }
+        spell.Cast (transform, true);
 	}
+
+    public float GetSpeedMod()
+    {
+        return spells[currentSpell].moveSpeedMod;
+    }
 
     public void RechargeSpells()
     {

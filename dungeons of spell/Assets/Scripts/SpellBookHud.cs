@@ -4,6 +4,7 @@ using System.Collections;
 
 public class SpellBookHud : MonoBehaviour {
     public Shoot PlayerSpellsBooks;
+    public GramDrawer gramdrawer;
     Text text;
     SpellBook mBook;
 	// Use this for initialization
@@ -11,7 +12,9 @@ public class SpellBookHud : MonoBehaviour {
         text = GetComponent<Text>();
         text.text = "0";
         PlayerSpellsBooks.SpellChanged += UpdateDisplay;
-	}
+        PlayerSpellsBooks.Reloaded += gramdrawer.ReDrawGram;
+    }
+
     void UpdateCount(SpellBook spell)
     {
         string count = "∞";
@@ -20,6 +23,7 @@ public class SpellBookHud : MonoBehaviour {
             count = spell.chargesCurrent + " / " + spell.chargesMax;
         }
         text.text = mBook.name + "\n " + count;
+        gramdrawer.SetPointsInUse((int)(spell.loadSize - (spell.chargesCurrent - spell.nextChargesTillReload)));
     }
 
     void UpdateDisplay(SpellBook book)
@@ -33,5 +37,9 @@ public class SpellBookHud : MonoBehaviour {
                 count = book.chargesCurrent + " / " + book.chargesMax;
         }
         text.text = book.name + "\n " + count;
+        gramdrawer.numPoints = (int)book.loadSize;
+        gramdrawer.ReDrawGram();
+        gramdrawer.SetPointsInUse((int)(book.loadSize - (book.chargesCurrent - book.nextChargesTillReload)));
+
     }
 }

@@ -6,17 +6,19 @@ public class StatePatternEnemy : MonoBehaviour {
 	public EnemyShoot shoot;
 
     public MonoBehaviour startState;
-    [HideInInspector] IEnemyState currentState;
+    IEnemyState currentState;
 	[HideInInspector] public AiMovement movement;
     [HideInInspector] public Movement player;
     [HideInInspector] public float lastAttackTime = 0;
+    [HideInInspector] public bool attack = false;
+    [HideInInspector] public float timeBetweenAttacks = 2;
+
+    public float AttackSpeed = 4;
     public float minAttackDistance = 0;
     public float maxAttackDistance = 0;
     public float minObserveDistance = 0;
     public Animator anim;
-
     public float numberOfAttacks = 1;
-    public float timeBetweenAttacks = 2;
     int layersThatBlockAttack;
 
     public void ChangeState(IEnemyState state)
@@ -64,12 +66,23 @@ public class StatePatternEnemy : MonoBehaviour {
             currentState = startingState;
             currentState.EnterState();
         }
+        anim.SetFloat("AttackSpeed", AttackSpeed);
+        anim.SetFloat("MoveSpeed", movement.movementSpeed/2);
     }
 
+    public void Attack()
+    {
+        shoot.shoot();
+    }
     // Update is called once per frame
     void Update () 
 	{
 		currentState.UpdateState ();
+        if(attack)
+        {
+            Attack();
+            attack = false;
+        }
 	}
     	
 

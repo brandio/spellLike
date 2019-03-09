@@ -7,20 +7,20 @@ public class ChaseState : IEnemyState {
 	public ChaseState(StatePatternEnemy spe)
 	{
 		statePatternEnemy = spe;
-        statePatternEnemy.anim.SetBool("Walking", true);
     }
 
 	public void EnterState()
 	{
-        
+        Debug.Log("Chase");
+        statePatternEnemy.anim.SetTrigger("Walking");
     }
 
 	public void ExitState()
 	{
+        Debug.Log("Chase exit");
+    }
 
-	}
-
-	public void UpdateState()
+    public void UpdateState()
 	{
         Movement player = statePatternEnemy.GetPlayer();
         if(player != null)

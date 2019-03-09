@@ -5,16 +5,17 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Room : MonoBehaviour
 {
-   // public int X;
-	//public int Y;
-	//public int depth;
+    // public int X;
+    //public int Y;
+    //public int depth;
     //public enum RoomObj{Wall,Floor};
-	//IRoomFiller filler;
-	public GameObject floor;
+    //IRoomFiller filler;
+    public GameObject floor;
 
-	public List<PathFindingNode> pathFindingNodes;
+    public List<PathFindingNode> pathFindingNodes;
     public List<GameObject> enemies;
 
+    public List<GameObject> mapObjs = new List<GameObject>();
     bool active = false;
     [HideInInspector]
     public bool bossRoom = false;
@@ -44,10 +45,25 @@ public class Room : MonoBehaviour
             RoomEntered(this);
         }
         
+        foreach(GameObject obj in mapObjs)
+        {
+            if (obj == null)
+                continue;
+            if (obj.transform.childCount > 0)
+            {
+                Transform child = obj.transform.GetChild(0);
+                if (child != null)
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
+
+        }
         placeEnemies();
         if(enemies.Count == 0)
         {
-            RoomCleared(this);
+            if (RoomCleared != null)
+                RoomCleared(this);
         }
     }
 

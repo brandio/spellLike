@@ -1,1 +1,1 @@
-{"title":"Bamboo","toolTip":"Thick and woody. A lot of bang for your buck but unpredictable.","subType":2,"cost":1.0,"isActive":false,"damage":4.5,"cooldown":0.9,"chaos":15.0}
+{"title":"Bamboo","toolTip":"Henlo","subType":2,"cost":0.2,"isActive":false,"damage":1.0,"cooldown":0.3,"chaos":10.0, "reloadTime": 1, "charges": 8.0, "moveSpeedMod": 1}

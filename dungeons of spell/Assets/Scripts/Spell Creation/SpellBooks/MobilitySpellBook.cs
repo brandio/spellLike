@@ -11,7 +11,11 @@ public class MobilitySpellBook : SpellBook {
 		range = baseRange * mobilitySpellBookBuilder.page.GetDamage ();
 	}
 
-	public override void Cast(Transform trans, bool parentsRotation)
+    public override void Cast(Transform trans, bool parentsRotation,Vector3 vec)
+    {
+        return;
+    }
+    public override void Cast(Transform trans, bool parentsRotation)
 	{
 		Vector3 world = Vector3.up;
 		if (parentsRotation == false) {

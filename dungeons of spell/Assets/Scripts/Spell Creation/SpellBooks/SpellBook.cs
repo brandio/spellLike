@@ -4,6 +4,9 @@ using System.Collections;
 public abstract class SpellBook {
     
     public float coolDown;
+    public float loadSize;
+    public float reloadTime;
+    public float moveSpeedMod;
 	public float cost;
 	public float chaos;
     public float chargesMax;
@@ -43,7 +46,26 @@ public abstract class SpellBook {
 
 
         chargesCurrent = chargesMax;
+        nextChargesTillReload = chargesMax - loadSize;
     }
 
+    public float nextChargesTillReload;
+    public void Reload()
+    {
+        nextChargesTillReload = chargesCurrent - loadSize;
+    }
+    public bool NeedReload()
+    {
+        if(chargesCurrent > nextChargesTillReload)
+        {
+            return false;
+        }
+        else 
+        {
+            return true;
+        }
+    }
     public abstract void Cast(Transform transform, bool ParentRotation);
+    public abstract void Cast(Transform transform, bool ParentRotation, Vector3 offset);
+
 }

@@ -17,6 +17,9 @@ public class SpellCreationSegment  {
 	// Events
 	public List<SpellEvent> events = new List<SpellEvent>();
 
+    //
+    public bool makePixels = true;
+
     void AdjustEventsForSpeed()
     {
         foreach (SpellEvent spellEvent in events)
@@ -105,7 +108,11 @@ public class SpellCreationSegment  {
 	{
         const float AVERAGE_SPEED = 290;
         const float AVERAGE_SIZE = 1;
-
+        if (spellPixels.Count == 0)
+        {
+            speed = AVERAGE_SPEED;
+            return;
+        }
         float total = 0;
 		foreach (SpellPixelFinal pixel in spellPixels) {
 			total = total + pixel.m_ink.GetMoveSpeed();
@@ -117,6 +124,8 @@ public class SpellCreationSegment  {
 
     void FinalizePixels(ISpellGrid grid, float damage)
 	{
+        if (!makePixels)
+            return;
         ISpellPixel[,] pixels = grid.GetGrid();
 		for (int x = 0; x < pixels.GetLength(0); x ++) {
 			for(int y = 0; y < pixels.GetLength(1); y++)

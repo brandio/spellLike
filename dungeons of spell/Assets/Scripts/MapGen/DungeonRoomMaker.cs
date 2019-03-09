@@ -15,6 +15,10 @@ public class DungeonRoomMaker : MonoBehaviour {
     public GameObject pathBottom;
     public GameObject wall;
 	Dictionary<Vector2,node> positionToNode = new Dictionary<Vector2,node>();
+    [HideInInspector]
+    public Vector2 bottomLeft = new Vector2(10000, 10000);
+    [HideInInspector]
+    public Vector2 topRight = new Vector2(-100000, -10000);
 
 	void Start()
 	{
@@ -100,19 +104,27 @@ public class DungeonRoomMaker : MonoBehaviour {
 
                 for (int i = 0; i < distance / tileSize; i++)
                 {
-                    Instantiate(path, new Vector3(xStart + i * 2, yStart, 0), Quaternion.identity);
+                    GameObject pathObj = Instantiate(path, new Vector3(xStart + i * 2, yStart, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
                 for (int i = 0; i < distance / tileSize; i++)
                 {
-                    Instantiate(path, new Vector3(xStart + i * 2, yStart + tileSize, 0), Quaternion.identity);
+                    GameObject pathObj =  Instantiate(path, new Vector3(xStart + i * 2, yStart + tileSize, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
                 for (int i = 0; i < distance / tileSize; i++)
                 {
-                    Instantiate(wall, new Vector3(xStart + i * 2, yStart - tileSize, 0), Quaternion.identity);
+                    GameObject pathObj =  Instantiate(wall, new Vector3(xStart + i * 2, yStart - tileSize, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
                 for (int i = 0; i < distance / tileSize; i++)
                 {
-                    Instantiate(pathBottom, new Vector3(xStart + i * 2, yStart + tileSize * 2, 0), Quaternion.identity);
+                    GameObject pathObj =  Instantiate(pathBottom, new Vector3(xStart + i * 2, yStart + tileSize * 2, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
             }
             // Going right
@@ -127,19 +139,27 @@ public class DungeonRoomMaker : MonoBehaviour {
 
                 for (int i = 0; i < distance/tileSize; i++)
 				{
-					Instantiate(path, new Vector3(xStart + i * 2,yStart,0),Quaternion.identity);
-				}
-                for (int i = 0; i < distance / tileSize; i++)
-                {
-                    Instantiate(path, new Vector3(xStart + i * 2, yStart + tileSize, 0), Quaternion.identity);
+                    GameObject pathObj =  Instantiate(path, new Vector3(xStart + i * 2,yStart,0),Quaternion.identity) as GameObject ;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
                 for (int i = 0; i < distance / tileSize; i++)
                 {
-                    Instantiate(wall, new Vector3(xStart + i * 2, yStart - tileSize, 0), Quaternion.identity);
+                    GameObject pathObj =  Instantiate(path, new Vector3(xStart + i * 2, yStart + tileSize, 0), Quaternion.identity) as GameObject ;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
                 for (int i = 0; i < distance / tileSize; i++)
                 {
-                    Instantiate(pathBottom, new Vector3(xStart + i * 2, yStart + 2 * tileSize, 0), Quaternion.identity);
+                    GameObject pathObj = Instantiate(wall, new Vector3(xStart + i * 2, yStart - tileSize, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
+                }
+                for (int i = 0; i < distance / tileSize; i++)
+                {
+                    GameObject pathObj =  Instantiate(pathBottom, new Vector3(xStart + i * 2, yStart + 2 * tileSize, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
             }
 		}
@@ -182,19 +202,27 @@ public class DungeonRoomMaker : MonoBehaviour {
                 start.roomBuilder.AddDoor(new Vector2(xStart + tileSize, yStart + distance));
                 for (int i = 0; i < distance/2; i++)
 				{
-					Instantiate(path,new Vector3(xStart + tileSize ,yStart + i * 2,0),Quaternion.identity);
-				}
-                for (int i = 0; i < distance / 2; i++)
-                {
-                    Instantiate(path, new Vector3(xStart, yStart + i * 2, 0), Quaternion.identity);
+                    GameObject pathObj =  Instantiate(path,new Vector3(xStart + tileSize ,yStart + i * 2,0),Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
                 for (int i = 0; i < distance / 2; i++)
                 {
-                    Instantiate(wall, new Vector3(xStart + tileSize * 2, yStart + i * 2, 0), Quaternion.identity);
+                    GameObject pathObj =  Instantiate(path, new Vector3(xStart, yStart + i * 2, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
                 for (int i = 0; i < distance / 2; i++)
                 {
-                    Instantiate(wall, new Vector3(xStart - tileSize, yStart + i * 2, 0), Quaternion.identity);
+                    GameObject pathObj =  Instantiate(wall, new Vector3(xStart + tileSize * 2, yStart + i * 2, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
+                }
+                for (int i = 0; i < distance / 2; i++)
+                {
+                    GameObject pathObj =  Instantiate(wall, new Vector3(xStart - tileSize, yStart + i * 2, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
             }
 			if (yDir == 1) {
@@ -206,21 +234,31 @@ public class DungeonRoomMaker : MonoBehaviour {
                 start.roomBuilder.AddDoor(new Vector2(xStart + tileSize, yStart - tileSize));
                 finish.roomBuilder.AddDoor(new Vector2(xStart + tileSize, yStart + distance));
 
+
+
                 for (int i = 0; i < distance/2; i++)
 				{
-					Instantiate(path,new Vector3(xStart + tileSize ,yStart + i * 2,0),Quaternion.identity);
-				}
-                for (int i = 0; i < distance / 2; i++)
-                {
-                    Instantiate(path, new Vector3(xStart, yStart + i * 2, 0), Quaternion.identity);
+                    GameObject pathObj =  Instantiate(path,new Vector3(xStart + tileSize ,yStart + i * 2,0),Quaternion.identity) as GameObject ;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
                 for (int i = 0; i < distance / 2; i++)
                 {
-                    Instantiate(wall, new Vector3(xStart - tileSize, yStart + i * 2, 0), Quaternion.identity);
+                    GameObject pathObj =  Instantiate(path, new Vector3(xStart, yStart + i * 2, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
                 for (int i = 0; i < distance / 2; i++)
                 {
-                    Instantiate(wall, new Vector3(xStart + tileSize * 2, yStart + i * 2, 0), Quaternion.identity);
+                    GameObject pathObj =  Instantiate(wall, new Vector3(xStart - tileSize, yStart + i * 2, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
+                }
+                for (int i = 0; i < distance / 2; i++)
+                {
+                    GameObject pathObj =  Instantiate(wall, new Vector3(xStart + tileSize * 2, yStart + i * 2, 0), Quaternion.identity) as GameObject;
+                    start.roomBuilder.floorObjs.Add(pathObj);
+                    finish.roomBuilder.floorObjs.Add(pathObj);
                 }
             }
 		}
@@ -285,8 +323,20 @@ public class DungeonRoomMaker : MonoBehaviour {
         }
         DetermineDungeon(roomBuilders);
 
+        int i = 0;
         foreach (System.Collections.Generic.KeyValuePair<Vector2, node> n in positionToNode) {
             PlayerRoomManager.instance.Rooms.Add(n.Value.roomBuilder.RoomFiller());
+            if (i == 0)
+                PlayerRoomManager.instance.Rooms[0].Activate();
+            if (n.Value.pos.x < bottomLeft.x)
+                bottomLeft.x = n.Value.pos.x;
+            if (n.Value.pos.y < bottomLeft.y)
+                bottomLeft.y = n.Value.pos.y;
+            if (n.Value.pos.x + n.Value.sizeX * tileSize > topRight.x)
+                topRight.x = n.Value.pos.x + n.Value.sizeX * tileSize;
+            if (n.Value.pos.y + n.Value.sizeY * tileSize > topRight.y)
+                topRight.y = n.Value.pos.y + n.Value.sizeY * tileSize;
+            i++;
             yield return null;
 		}
 
@@ -337,7 +387,7 @@ public class DungeonRoomMaker : MonoBehaviour {
             {
                 if (Random.Range(0, 100) > 10)
                 {
-                    builder.AddRoomFiller(new MiddleBlockRoom(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
+                    builder.AddRoomFiller(new GraveYardRoom(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
                 }
                 else if(Random.Range(0, 100) > 32)
                 {
@@ -345,7 +395,7 @@ public class DungeonRoomMaker : MonoBehaviour {
                 }
                 else
                 {
-                    builder.AddRoomFiller(new MiddleBlockRoom(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
+                    builder.AddRoomFiller(new GraveYardRoom(builder.position, builder.sizeX, builder.sizeY, builder.room, builder.doors));
                 }
             }
             //Debug.Log(builder.depth);

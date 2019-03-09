@@ -59,14 +59,16 @@ public class ComponentLoader {
         instance.path = Path.Combine("Assets", "Resources");
         instance.path = Path.Combine(instance.path, "SpellInfo");
 
-        instance.StartingSpellComponents = new UnLoadedSpellComponent[] { 
+        instance.StartingSpellComponents = new UnLoadedSpellComponent[] {
         new UnLoadedSpellComponent("Paper", SpellComponent.SubSpellComponentType.Paper),
+                new UnLoadedSpellComponent("Bamboo", SpellComponent.SubSpellComponentType.Paper),
+
              new UnLoadedSpellComponent("Basic", SpellComponent.SubSpellComponentType.Rune),
              new UnLoadedSpellComponent("LeftHook", SpellComponent.SubSpellComponentType.Rune),
              new UnLoadedSpellComponent("RightHook", SpellComponent.SubSpellComponentType.Rune),
              new UnLoadedSpellComponent("Boomerang", SpellComponent.SubSpellComponentType.Rune),
              new UnLoadedSpellComponent("Slipping Snake", SpellComponent.SubSpellComponentType.Rune),
-             new UnLoadedSpellComponent("AlphaStar", SpellComponent.SubSpellComponentType.Rune),          
+             new UnLoadedSpellComponent("AlphaStar", SpellComponent.SubSpellComponentType.Rune),
              new UnLoadedSpellComponent("TwinBat", SpellComponent.SubSpellComponentType.Rune),
              new UnLoadedSpellComponent("Bomb", SpellComponent.SubSpellComponentType.Rune),
 

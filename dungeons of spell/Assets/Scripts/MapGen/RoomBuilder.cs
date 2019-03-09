@@ -13,10 +13,12 @@ public class RoomBuilder  {
     public Vector2 position;
     IRoomFiller roomFiller;
     public bool hasRoomFiller;
+    public List<GameObject> floorObjs;
     public RoomBuilder(int x, int y, Vector2 pos, int d)
     {
         GameObject newRoom = new GameObject();
         doors = new List<Vector2>();
+        floorObjs = new List<GameObject>();
         room = newRoom.AddComponent<Room>() as Room;
         transform = room.transform;
         transform.position = pos;
@@ -68,6 +70,13 @@ public class RoomBuilder  {
         //{
         //    filler = new MiddleBlockRoom(position, sizeX, sizeY, room, doors);
         //}
+        foreach (GameObject obj in floorObjs)
+        {
+            if (obj != null)
+            {
+                room.mapObjs.Add(obj);
+            }
+        }
         return roomFiller.FillRoom();
     }
 
@@ -78,7 +87,16 @@ public class RoomBuilder  {
         floor.transform.parent = transform;
         floor.transform.localScale = new Vector3(sizeX * 2, sizeY * 2);
         floor.transform.localPosition = new Vector3(sizeX - 1, sizeY - 1);
+        foreach (GameObject obj in floorObjs)
+        {
+            if (obj != null)
+            {
+                room.mapObjs.Add(obj);
+            }
+        }
         room.floor = floor;
+        room.mapObjs.Add(floor);
+
         return floor;
     }
 }

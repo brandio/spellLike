@@ -33,7 +33,7 @@ public class Health : MonoBehaviour {
             SceneManager.LoadScene(0);
         }
 		if (anim != null) {
-			anim.SetBool("Death", true);
+			anim.SetTrigger("Death");
 		}
         audioSource.clip = deathSound;
         audioSource.Play();

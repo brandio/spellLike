@@ -1,0 +1,1 @@
+{"title":"Water","toolTip":"Burns its target over time.","subType":1,"cost":2.0,"isActive":false,"moveSpeed":1.0,"damageMod":1.0,"priority":1.0,"color":{"r":0.25,"g":0.5,"b":0.8,"a":1.0},"onHitEffectName":"FireOnHitEffect"}

@@ -14,14 +14,22 @@ public class ProjectileController : MonoBehaviour {
 		for (int i = 0; i < events.Count; i++) {
 			yield return new WaitForSeconds (events[i].CallAndWait(this));
             bool projActive = false;
-			foreach(Transform child in transform)
-			{
-				if(child.gameObject.activeSelf == true)
-				{
-					projActive = true;
-					break;
-				}
-			}
+            if(!spellSeg.makePixels)
+            {
+                projActive = true;
+            }
+            else
+            {
+                foreach (Transform child in transform)
+                {
+                    if (child.gameObject.activeSelf == true)
+                    {
+                        projActive = true;
+                        break;
+                    }
+                }
+            }
+
 			if(!projActive)
 			{
 				events[events.Count - 1].CallAndWait(this);

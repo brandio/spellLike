@@ -60,7 +60,7 @@ public class MirrorImageState : IEnemyState
         if(Time.time - time >= statePatternEnemy.delayTime && timeSet)
         {
             statePatternEnemy.ChangeState(new RedManChaseState(statePatternEnemy));
-            GlitchFx.instance.Reset();
+            //GlitchFx.instance.Reset();
         }
     }
 }

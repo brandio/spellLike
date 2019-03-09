@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour, PathingObject{
 	public Animator anim;
 	public float speedMod = 1;
     public LayerMask mask;
+    public Shoot shoot;
     [HideInInspector]
     public Vector2 direction = Vector2.zero;
 	// Use this for initialization
@@ -83,7 +84,7 @@ public class Movement : MonoBehaviour, PathingObject{
 			moveVector = moveVector + new Vector3(0,-1,0);
 		}
         
-		Vector3 pos = this.transform.position + (moveVector * speed * speedMod * Time.deltaTime);
+		Vector3 pos = this.transform.position + (moveVector * speed * speedMod * shoot.GetSpeedMod() * Time.deltaTime);
 		if(mc.CheckMove(pos))
 		{
             if (moveVector == Vector3.zero)

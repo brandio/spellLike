@@ -69,6 +69,7 @@ public class TeleportIn : MonoBehaviour {
     {
         anim.SetBool("TeleportIn", false);
     }
+
     IEnumerator Teleport()
     {
         float time = Random.Range(minTime, maxTime);

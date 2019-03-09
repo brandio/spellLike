@@ -94,7 +94,28 @@ public class ProjectileSpellBook : SpellBook
             CastThrown(trans, parentsRotation);
         }
     }
-	void CastFromTrans(Vector3 pos, Quaternion rotation)
+
+    public override void Cast(Transform trans, bool parentsRotation, Vector3 offset)
+    {
+        if (!thrown)
+        {
+            if (parentsRotation)
+            {
+                CastFromTrans(trans.position + offset, trans.parent.rotation);
+            }
+            else
+            {
+                CastFromTrans(trans.position + offset, trans.rotation);
+            }
+
+        }
+        else
+        {
+            CastThrown(trans, parentsRotation);
+        }
+    }
+
+    void CastFromTrans(Vector3 pos, Quaternion rotation)
 	{
         if (chargesCurrent == 0 && source == ProjectileSpellBookBuilder.spellSource.player)
         {
@@ -188,7 +209,10 @@ public class ProjectileSpellBook : SpellBook
 
 		chaos = builder.page.GetChaos ();
 		coolDown = builder.page.GetCoolDown ();
-		layerMaskNames = builder.GetLayers();
+        reloadTime = builder.page.GetReloadTime();
+        loadSize = builder.page.GetCharges();
+        moveSpeedMod = builder.page.GetMoveSpeed();
+        layerMaskNames = builder.GetLayers();
 		CheckOutProj (builder);
 
         if((source == ProjectileSpellBookBuilder.spellSource.player))

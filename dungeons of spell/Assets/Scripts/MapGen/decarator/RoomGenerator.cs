@@ -38,11 +38,12 @@ public class RoomGenerator
         {
             for (int y = 0; y < grid.GetLength(0); y++)
             {
-                if(grid[y,x] == "O" || grid[y, x] == "M" || grid[y, x] == "MS" || grid[y, x] == "S" || grid[y, x] == "ST")
+                if(grid[y,x] == "O" || grid[y, x] == "M" || grid[y, x] == "MS" || grid[y, x] == "S" || grid[y, x] == "ST" || grid[y, x] == "T")
                 {
                     string delim = System.IO.Path.DirectorySeparatorChar.ToString();
                     string path = "Walls" + delim + "Side1" + delim + "Path";
                     GameObject spawnedObject = GameObject.Instantiate(Resources.Load(path) as GameObject) as GameObject;
+                    room.mapObjs.Add(spawnedObject);
                     spawnedObject.transform.position = pos + new Vector2(y * size, x * size);
                     spawnedObject.transform.parent = room.transform;
                 }
@@ -177,6 +178,7 @@ public class RoomGenerator
     F = Flowers
     MS = Mushroom
     ST = store ownder
+    T = tomb stone
     Portal = Portal
     ==================
     B = BigTree
@@ -228,6 +230,9 @@ public class RoomGenerator
                 break;
             case "MS":
                 path = "RoomStuff" + delim + "Mushroom";
+                break;
+            case "T":
+                path = "RoomStuff" + delim + "Tombstone";
                 break;
             default:
                 Debug.LogError("Room generator recieved an invalid character " + s);

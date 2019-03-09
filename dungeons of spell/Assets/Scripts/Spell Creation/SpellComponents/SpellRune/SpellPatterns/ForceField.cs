@@ -10,7 +10,7 @@ public class ForceField : ISpellPattern {
         {
             SpellCreationSegment seg = new SpellCreationSegment();
             seg.SetStartingRotation(90 * i);
-            seg.SetSpeedMod(0);
+            seg.SetSpeedMod(0.1f);
             seg.AddEvent(new SpellMove(2, seg));
             seg.AddEvent(new Wait(2, seg));
             seg.AddEvent(new SpellEnd());

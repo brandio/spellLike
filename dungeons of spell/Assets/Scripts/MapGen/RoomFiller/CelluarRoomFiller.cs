@@ -152,7 +152,7 @@ public class CelluarRoomFiller : StartRoomFiller
                 if (neighbourWallTiles > 4)
                     grid[x, y] = "X";
                 else if (neighbourWallTiles < 4)
-                    grid[x, y] = "O";   
+                    grid[x, y] = "O";
 
             }
         }

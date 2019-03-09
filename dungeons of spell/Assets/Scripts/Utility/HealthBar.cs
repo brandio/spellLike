@@ -25,20 +25,28 @@ public class HealthBar : MonoBehaviour
     float minAlpha = .1f;
     IEnumerator FaidHealth()
     {
-        //Debug.Log("faidin");
-        float i = minAlpha;
-        while (i < 1)
+        if(health.GetPercent() < .40f)
         {
-            image.color = new Color(image.color.r, image.color.g, image.color.b, i);
-            i = i + fadeRate*10;
-            yield return null;
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
         }
-        while (i > minAlpha)
+        else
         {
-            image.color = new Color(image.color.r, image.color.g, image.color.b, i);
-            i = i - fadeRate;
-            yield return null;
+            //Debug.Log("faidin");
+            float i = minAlpha;
+            while (i < 1)
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, i);
+                i = i + fadeRate * 10;
+                yield return null;
+            }
+            while (i > minAlpha)
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, i);
+                i = i - fadeRate;
+                yield return null;
+            }
         }
+
     }
 
     public void UpdateHealthBar(Health health)
@@ -52,6 +60,7 @@ public class HealthBar : MonoBehaviour
     {
         MoveTowardsTargetHealth();
     }
+
     public void MoveTowardsTargetHealth()
     {
         if (targetScale < 0)
@@ -75,9 +84,9 @@ public class HealthBar : MonoBehaviour
             return;
         }
 
-        image.color = new Color(1 - targetScale/ startXScale, targetScale / startXScale, .3f);
+        image.color = new Color(1 - targetScale/ startXScale - 0.3f, targetScale / startXScale, 1 - targetScale / startXScale);
         transform.localScale = new Vector3(transform.localScale.x + amountToScale, transform.localScale.y, 1);
-        transform.localPosition = new Vector3(startXPosition -  ((startXScale - transform.localScale.x)/2), transform.localPosition.y, 0);
+        transform.localPosition = new Vector3(startXPosition -  ((startXScale - transform.localScale.x)/1.3f), transform.localPosition.y, 0);
     }
 }
 

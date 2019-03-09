@@ -13,11 +13,13 @@ public class ObserveState : IEnemyState
 
     public void EnterState()
     {
-
+        Debug.Log("observe");
     }
 
     public void ExitState()
     {
+        statePatternEnemy.lastAttackTime = Time.time - 1;
+        Debug.Log("observe exit");
 
     }
 

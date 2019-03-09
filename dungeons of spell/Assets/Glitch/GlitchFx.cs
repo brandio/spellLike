@@ -22,11 +22,11 @@ public class GlitchFx : MonoBehaviour
         shiftMagTemp = shiftAmt;
     }
 
-    public void Reset()
-    {
-        glitchAmountTemp = glitchAmount;
-        shiftMagTemp = shiftMag;
-    }
+    //public void Reset()
+    //{
+    //    glitchAmountTemp = glitchAmount;
+    //    shiftMagTemp = shiftMag;
+    //}
     void Start()
     {
         instance = this;
@@ -34,7 +34,7 @@ public class GlitchFx : MonoBehaviour
         _glitchMat = new Material(_glitchShader);
         _glitchMat.SetTexture("_GlitchMap", blockTexture);
 
-        Reset();
+        //Reset();
         Invoke("UpdateRandom", 0.25f);
     }
 
@@ -54,7 +54,7 @@ public class GlitchFx : MonoBehaviour
     {
         glitchAmount = Mathf.Clamp(glitchAmount, 0.0f, 1.0f);
 
-        _glitchMat.SetFloat("_ShiftMag", shiftMagTemp);
-        _glitchMat.SetFloat("_GlitchAmount", glitchAmountTemp);
+        _glitchMat.SetFloat("_ShiftMag", shiftMag);
+        _glitchMat.SetFloat("_GlitchAmount", glitchAmount);
     }
 }

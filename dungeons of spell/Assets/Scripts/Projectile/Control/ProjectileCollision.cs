@@ -48,8 +48,10 @@ public class ProjectileCollision : MonoBehaviour {
 			}
 			else if(LayerMask.NameToLayer("BackGround") == hitObject.layer)
 			{
+                
 				if(collideWithBack)
 				{
+                    hitObject.gameObject.GetComponent<WallSound>().Play();
 					backGroundCollisionBehaviour(gameObject,movementCheck);
 				}
 			}

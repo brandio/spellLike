@@ -8,13 +8,12 @@ public class AttackState : IEnemyState
     public AttackState(StatePatternEnemy spe)
     {
         statePatternEnemy = spe;
-        statePatternEnemy.anim.SetBool("Walking", false);
-        statePatternEnemy.shoot.ShotFired += CountAttacks;
     }
 
     void CountAttacks()
     {
         numberOfAttacks++;
+        Debug.Log("Attacked");
         if(numberOfAttacks >= statePatternEnemy.numberOfAttacks)
         {
             statePatternEnemy.ChangeState(new ChaseState(statePatternEnemy));
@@ -23,16 +22,23 @@ public class AttackState : IEnemyState
 
     public void EnterState()
     {
+        Debug.Log("Attack");
+        statePatternEnemy.shoot.ShotFired += CountAttacks;
+        statePatternEnemy.anim.SetTrigger("Attacking");
+        Debug.Log(statePatternEnemy.anim.GetCurrentAnimatorStateInfo(0).ToString());
+
     }
 
     public void ExitState()
     {
+        Debug.Log("Attack exit");
         statePatternEnemy.lastAttackTime = Time.time;
         statePatternEnemy.shoot.ShotFired -= CountAttacks;
     }
 
     public void UpdateState()
     {
-        statePatternEnemy.shoot.shoot();
+        
+        //statePatternEnemy.shoot.shoot();
     }
 }
